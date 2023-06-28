@@ -33,7 +33,7 @@ class CountryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .cellColor
         self.setupCountryDetail()
         self.screen.delegate(delegate: self)
     }
