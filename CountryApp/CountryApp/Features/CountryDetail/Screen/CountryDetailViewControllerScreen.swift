@@ -42,7 +42,7 @@ class CountryDetailViewControllerScreen: UIView {
         return view
     }()
     
-    lazy var view: UIView = {
+    lazy var detailView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
@@ -89,7 +89,7 @@ class CountryDetailViewControllerScreen: UIView {
     
     public func addElements() {
         addSubview(navigationBarView)
-        addSubview(view)
+        addSubview(detailView)
         navigationBarView.addSubview(backButton)
         navigationBarView.addSubview(countryNameLabel)
         addSubview(countryFlagImageView)
@@ -116,10 +116,10 @@ class CountryDetailViewControllerScreen: UIView {
             countryFlagImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35),
             countryFlagImageView.heightAnchor.constraint(equalToConstant: 220),
             
-            view.topAnchor.constraint(equalTo: countryNameLabel.bottomAnchor, constant: 20),
-            view.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
-            view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
-            view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            detailView.topAnchor.constraint(equalTo: countryNameLabel.bottomAnchor, constant: 20),
+            detailView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
+            detailView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            detailView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
         ])
     }
 }
