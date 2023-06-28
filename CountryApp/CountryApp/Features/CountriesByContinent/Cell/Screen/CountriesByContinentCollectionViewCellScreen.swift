@@ -14,6 +14,7 @@ class CountriesByContinentCollectionViewCellScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 22
         view.backgroundColor = .cellColor
+        view.setCardShadow()
         return view
     }()
     

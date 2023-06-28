@@ -16,6 +16,16 @@ class AllCountriesViewControllerScreen: UIView {
         return view
     }()
     
+    lazy var countryNameLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        lb.text = "Country App"
+        lb.textColor = UIColor.white
+        lb.textAlignment = .center
+        return lb
+    }()
+    
     lazy var collectionView: UICollectionView = {
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout.init())
         cv.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +56,7 @@ class AllCountriesViewControllerScreen: UIView {
     
     public func addElements() {
         addSubview(navigationBarView)
+        navigationBarView.addSubview(countryNameLabel)
         addSubview(collectionView)
     }
     
@@ -55,6 +66,9 @@ class AllCountriesViewControllerScreen: UIView {
             navigationBarView.leadingAnchor.constraint(equalTo: leadingAnchor),
             navigationBarView.trailingAnchor.constraint(equalTo: trailingAnchor),
             navigationBarView.heightAnchor.constraint(equalToConstant: 110),
+            
+            countryNameLabel.centerXAnchor.constraint(equalTo: navigationBarView.centerXAnchor),
+            countryNameLabel.centerYAnchor.constraint(equalTo: navigationBarView.centerYAnchor, constant: 20),
             
             collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),

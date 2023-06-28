@@ -31,6 +31,8 @@
 		505223B32A4A30210034AD0F /* AllCountriesViewControllerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505223A22A4A30210034AD0F /* AllCountriesViewControllerScreen.swift */; };
 		505223B62A4A30600034AD0F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 505223B52A4A30600034AD0F /* Alamofire */; };
 		505223B92A4A309A0034AD0F /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 505223B82A4A309A0034AD0F /* AlamofireImage */; };
+		5093AE012A4C8B7300FB44CA /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5093AE002A4C8B7300FB44CA /* UIViewController+Extension.swift */; };
+		5093AE032A4C8E1B00FB44CA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5093AE022A4C8E1B00FB44CA /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		5052239E2A4A30210034AD0F /* AllCountriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		505223A02A4A30210034AD0F /* AllCountriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountriesViewController.swift; sourceTree = "<group>"; };
 		505223A22A4A30210034AD0F /* AllCountriesViewControllerScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountriesViewControllerScreen.swift; sourceTree = "<group>"; };
+		5093AE002A4C8B7300FB44CA /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		5093AE022A4C8E1B00FB44CA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +138,9 @@
 		5052237E2A4A30210034AD0F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				5093AE002A4C8B7300FB44CA /* UIViewController+Extension.swift */,
 				5052237F2A4A30210034AD0F /* UIColor+Extension.swift */,
+				5093AE022A4C8E1B00FB44CA /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -422,12 +428,14 @@
 				505223B12A4A30210034AD0F /* AllCountriesCollectionViewCell.swift in Sources */,
 				505223A42A4A30210034AD0F /* TabBarController.swift in Sources */,
 				5052235C2A4A2F950034AD0F /* AppDelegate.swift in Sources */,
+				5093AE012A4C8B7300FB44CA /* UIViewController+Extension.swift in Sources */,
 				505223AF2A4A30210034AD0F /* AllCountriesViewModel.swift in Sources */,
 				505223B22A4A30210034AD0F /* AllCountriesViewController.swift in Sources */,
 				5052235E2A4A2F950034AD0F /* SceneDelegate.swift in Sources */,
 				505223AE2A4A30210034AD0F /* CountryDetailViewControllerScreen.swift in Sources */,
 				505223A62A4A30210034AD0F /* Country.swift in Sources */,
 				505223AA2A4A30210034AD0F /* CountriesByContinentCollectionViewCell.swift in Sources */,
+				5093AE032A4C8E1B00FB44CA /* UIView+Extension.swift in Sources */,
 				505223AD2A4A30210034AD0F /* CountryDetailViewController.swift in Sources */,
 				505223A92A4A30210034AD0F /* CountriesByContinentCollectionViewCellScreen.swift in Sources */,
 				505223A52A4A30210034AD0F /* UIColor+Extension.swift in Sources */,
