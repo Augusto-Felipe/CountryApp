@@ -35,7 +35,7 @@
 
 /* Begin PBXFileReference section */
 		504365A72A4BDF56001030E9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		504365A92A4BE12B001030E9 /* brasil-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "brasil-logo.png"; path = "CountryApp/Assets.xcassets/brasil-logo.png.imageset/brasil-logo.png"; sourceTree = "<group>"; };
+		504365A92A4BE12B001030E9 /* brasil-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brasil-logo.png"; sourceTree = "<group>"; };
 		505223582A4A2F950034AD0F /* CountryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5052235B2A4A2F950034AD0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5052235D2A4A2F950034AD0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +76,6 @@
 		5052234F2A4A2F950034AD0F = {
 			isa = PBXGroup;
 			children = (
-				504365A92A4BE12B001030E9 /* brasil-logo.png */,
 				5052235A2A4A2F950034AD0F /* CountryApp */,
 				505223592A4A2F950034AD0F /* Products */,
 			);
@@ -93,6 +92,7 @@
 		5052235A2A4A2F950034AD0F /* CountryApp */ = {
 			isa = PBXGroup;
 			children = (
+				5093ADFF2A4C88D800FB44CA /* Images */,
 				5052237D2A4A30210034AD0F /* Utils */,
 				505223792A4A30210034AD0F /* Service */,
 				505223802A4A30210034AD0F /* Model */,
@@ -317,6 +317,14 @@
 				505223A22A4A30210034AD0F /* AllCountriesViewControllerScreen.swift */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		5093ADFF2A4C88D800FB44CA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				504365A92A4BE12B001030E9 /* brasil-logo.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 		50D9DA522A4BBAFB0052EF24 /* Cell */ = {
