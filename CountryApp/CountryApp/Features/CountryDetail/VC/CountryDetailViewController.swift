@@ -40,6 +40,10 @@ class CountryDetailViewController: UIViewController {
     
     public func setupCountryDetail() {
         self.screen.countryNameLabel.text = country?.name?.official
+        if let urlFlagImage: URL = URL(string: country?.flags?.png ?? "") {
+            screen.countryFlagImageView.af.setImage(withURL: urlFlagImage)
+            screen.countryFlagImageView.backgroundColor = .white
+        }
     }
 }
 

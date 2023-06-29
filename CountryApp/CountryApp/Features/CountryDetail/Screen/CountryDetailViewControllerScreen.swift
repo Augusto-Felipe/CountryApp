@@ -19,16 +19,6 @@ class CountryDetailViewControllerScreen: UIView {
         self.delegate = delegate
     }
     
-    lazy var countryNameLabel: UILabel = {
-        let lb = UILabel()
-        lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        lb.textColor = UIColor.white
-        lb.textAlignment = .center
-        lb.numberOfLines = 0
-        return lb
-    }()
-    
     lazy var navigationBarView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +30,27 @@ class CountryDetailViewControllerScreen: UIView {
         view.layer.shadowOpacity = 1
         view.layer.shadowRadius = 10
         return view
+    }()
+    
+    lazy var countryNameLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        lb.textColor = UIColor.white
+        lb.textAlignment = .center
+        lb.numberOfLines = 0
+        return lb
+    }()
+    
+    lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "chevron.left.circle.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.tintColor = .white
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return button
     }()
     
     lazy var detailView: UIView = {
@@ -55,22 +66,31 @@ class CountryDetailViewControllerScreen: UIView {
         return view
     }()
     
-    lazy var backButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "chevron.left.circle.fill")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.tintColor = .white
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
-        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-        return button
+    lazy var flagCardView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .cellColor
+        view.layer.shadowOpacity = 0.7
+        view.layer.shadowOffset = CGSize(width: 1, height: 1)
+        view.layer.shadowRadius = 8
+        view.layer.shouldRasterize = true
+        view.layer.masksToBounds = false
+        view.layer.rasterizationScale = UIScreen.main.scale
+        return view
     }()
     
     lazy var countryFlagImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
         return imageView
+    }()
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.backgroundColor = .red
+        return scrollView
     }()
     
     @objc public func backButtonTapped() {
@@ -90,6 +110,8 @@ class CountryDetailViewControllerScreen: UIView {
     public func addElements() {
         addSubview(navigationBarView)
         addSubview(detailView)
+        detailView.addSubview(flagCardView)
+        detailView.addSubview(scrollView)
         navigationBarView.addSubview(backButton)
         navigationBarView.addSubview(countryNameLabel)
         addSubview(countryFlagImageView)
@@ -111,15 +133,25 @@ class CountryDetailViewControllerScreen: UIView {
             countryNameLabel.leadingAnchor.constraint(equalTo: backButton.trailingAnchor, constant: -20),
             countryNameLabel.trailingAnchor.constraint(equalTo: navigationBarView.trailingAnchor, constant: -10),
             
-            countryFlagImageView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor, constant: 20),
-            countryFlagImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 35),
-            countryFlagImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -35),
-            countryFlagImageView.heightAnchor.constraint(equalToConstant: 220),
-            
             detailView.topAnchor.constraint(equalTo: countryNameLabel.bottomAnchor, constant: 20),
             detailView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 25),
             detailView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
             detailView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+            
+            flagCardView.topAnchor.constraint(equalTo: detailView.topAnchor, constant: 25),
+            flagCardView.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: 40),
+            flagCardView.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: -40),
+            flagCardView.heightAnchor.constraint(equalToConstant: 150),
+            
+            countryFlagImageView.topAnchor.constraint(equalTo: flagCardView.topAnchor),
+            countryFlagImageView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            countryFlagImageView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            countryFlagImageView.bottomAnchor.constraint(equalTo: flagCardView.bottomAnchor),
+            
+            scrollView.topAnchor.constraint(equalTo: flagCardView.bottomAnchor, constant: 20),
+            scrollView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor),
         ])
     }
 }
