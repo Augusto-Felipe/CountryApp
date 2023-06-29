@@ -93,6 +93,33 @@ class CountryDetailViewControllerScreen: UIView {
         return scrollView
     }()
     
+    lazy var capitalTitleLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        lb.textColor = UIColor.lightGray
+        lb.text = "Capital"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var capitalView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 22
+        view.backgroundColor = .cellColor
+        return view
+    }()
+    
+    lazy var capitalLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        lb.textColor = UIColor.appBlue
+        lb.text = "Teste"
+        lb.textAlignment = .center
+        return lb
+    }()
     
     lazy var currencyTitleLabel: UILabel = {
         let lb = UILabel()
@@ -104,15 +131,13 @@ class CountryDetailViewControllerScreen: UIView {
         return lb
     }()
     
-    lazy var symbolTitleLabel: UILabel = {
-        let lb = UILabel()
-        lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
-        lb.textColor = UIColor.lightGray
-        lb.text = "Símbolo"
-        lb.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
-        lb.textAlignment = .center
-        return lb
+    let stackView:UIStackView = {
+       let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.distribution = .fill
+        stack.axis = .horizontal
+        stack.spacing = 10
+        return stack
     }()
     
     lazy var currencyView: UIView = {
@@ -120,6 +145,8 @@ class CountryDetailViewControllerScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 22
         view.backgroundColor = .cellColor
+        view.setContentHuggingPriority(.required, for: .horizontal)
+        view.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return view
     }()
     
@@ -137,6 +164,8 @@ class CountryDetailViewControllerScreen: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 22
         view.backgroundColor = .cellColor
+        view.setContentHuggingPriority(.required, for: .horizontal)
+        view.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return view
     }()
     
@@ -171,9 +200,13 @@ class CountryDetailViewControllerScreen: UIView {
         navigationBarView.addSubview(backButton)
         navigationBarView.addSubview(countryNameLabel)
         addSubview(countryFlagImageView)
+        scrollView.addSubview(capitalTitleLabel)
+        scrollView.addSubview(capitalView)
+        capitalView.addSubview(capitalLabel)
         scrollView.addSubview(currencyTitleLabel)
-        scrollView.addSubview(currencyView)
-        scrollView.addSubview(currencySymbolView)
+        scrollView.addSubview(stackView)
+        stackView.addArrangedSubview(currencyView)
+        stackView.addArrangedSubview(currencySymbolView)
         currencyView.addSubview(currencyLabel)
         currencySymbolView.addSubview(currencySymbolLabel)
     }
@@ -214,24 +247,34 @@ class CountryDetailViewControllerScreen: UIView {
             scrollView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor),
             
-            currencyTitleLabel.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
-            currencyTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            capitalTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            capitalTitleLabel.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
             
-            currencyView.topAnchor.constraint(equalTo: currencyTitleLabel.bottomAnchor, constant: 10),
-            currencyView.centerXAnchor.constraint(equalTo: currencyTitleLabel.centerXAnchor),
-            currencyView.trailingAnchor.constraint(equalTo: currencyLabel.trailingAnchor, constant: 10),
-            currencyView.heightAnchor.constraint(equalToConstant: 50),
+            capitalView.topAnchor.constraint(equalTo: capitalTitleLabel.bottomAnchor, constant: 10),
+            capitalView.leadingAnchor.constraint(equalTo: capitalTitleLabel.leadingAnchor),
+            capitalView.trailingAnchor.constraint(equalTo: capitalTitleLabel.trailingAnchor),
+            capitalView.heightAnchor.constraint(equalToConstant: 50),
+            
+            capitalLabel.centerYAnchor.constraint(equalTo: capitalView.centerYAnchor),
+            capitalLabel.leadingAnchor.constraint(equalTo: capitalView.leadingAnchor, constant: 10),
+            capitalLabel.trailingAnchor.constraint(equalTo: capitalView.trailingAnchor, constant: -10),
+            
+            currencyTitleLabel.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
+            currencyTitleLabel.topAnchor.constraint(equalTo: capitalView.bottomAnchor, constant: 10),
+            
+            stackView.topAnchor.constraint(equalTo: currencyTitleLabel.bottomAnchor, constant: 10),
+            stackView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            stackView.heightAnchor.constraint(equalToConstant: 50),
             
             currencyLabel.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor),
             currencyLabel.leadingAnchor.constraint(equalTo: currencyView.leadingAnchor, constant: 10),
-            
-            currencySymbolView.topAnchor.constraint(equalTo: currencyView.topAnchor),
-            currencySymbolView.leadingAnchor.constraint(equalTo: currencyView.trailingAnchor, constant: 10),
-            currencySymbolView.trailingAnchor.constraint(equalTo: currencySymbolLabel.trailingAnchor, constant: 10),
-            currencySymbolView.heightAnchor.constraint(equalToConstant: 50),
+            currencyLabel.trailingAnchor.constraint(equalTo: currencyView.trailingAnchor, constant: -10),
             
             currencySymbolLabel.centerYAnchor.constraint(equalTo: currencySymbolView.centerYAnchor),
-            currencySymbolLabel.leadingAnchor.constraint(equalTo: currencySymbolView.leadingAnchor, constant: 10),
+            currencySymbolLabel.centerXAnchor.constraint(equalTo: currencySymbolView.centerXAnchor),
+            currencySymbolLabel.leadingAnchor.constraint(equalTo: currencySymbolView.leadingAnchor, constant: 20),
+            currencySymbolView.trailingAnchor.constraint(equalTo: currencySymbolView.trailingAnchor, constant: -20),
         ])
     }
 }

@@ -57,6 +57,11 @@ class CountryDetailViewController: UIViewController {
                 }
             }
         }
+        if let countryCapital = country?.capital?[0] {
+            self.screen.capitalLabel.text = countryCapital
+        } else {
+            self.screen.capitalLabel.text = "Erro"
+        }
     }
 }
 
