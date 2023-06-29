@@ -93,12 +93,24 @@ class CountryDetailViewControllerScreen: UIView {
         return scrollView
     }()
     
+    
     lazy var currencyTitleLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         lb.textColor = UIColor.lightGray
         lb.text = "Moeda"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var symbolTitleLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        lb.textColor = UIColor.lightGray
+        lb.text = "Símbolo"
+        lb.backgroundColor = UIColor(red: 52/255, green: 52/255, blue: 52/255, alpha: 1.0)
         lb.textAlignment = .center
         return lb
     }()
@@ -112,6 +124,23 @@ class CountryDetailViewControllerScreen: UIView {
     }()
     
     lazy var currencyLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        lb.textColor = UIColor.appBlue
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var currencySymbolView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 22
+        view.backgroundColor = .cellColor
+        return view
+    }()
+    
+    lazy var currencySymbolLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.systemFont(ofSize: 12, weight: .bold)
@@ -144,7 +173,9 @@ class CountryDetailViewControllerScreen: UIView {
         addSubview(countryFlagImageView)
         scrollView.addSubview(currencyTitleLabel)
         scrollView.addSubview(currencyView)
+        scrollView.addSubview(currencySymbolView)
         currencyView.addSubview(currencyLabel)
+        currencySymbolView.addSubview(currencySymbolLabel)
     }
     
     public func setupConstraints() {
@@ -183,16 +214,24 @@ class CountryDetailViewControllerScreen: UIView {
             scrollView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor),
             
-            currencyTitleLabel.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            currencyTitleLabel.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
             currencyTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
             
             currencyView.topAnchor.constraint(equalTo: currencyTitleLabel.bottomAnchor, constant: 10),
-            currencyView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
-            currencyView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            currencyView.centerXAnchor.constraint(equalTo: currencyTitleLabel.centerXAnchor),
+            currencyView.trailingAnchor.constraint(equalTo: currencyLabel.trailingAnchor, constant: 10),
             currencyView.heightAnchor.constraint(equalToConstant: 50),
             
             currencyLabel.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor),
             currencyLabel.leadingAnchor.constraint(equalTo: currencyView.leadingAnchor, constant: 10),
+            
+            currencySymbolView.topAnchor.constraint(equalTo: currencyView.topAnchor),
+            currencySymbolView.leadingAnchor.constraint(equalTo: currencyView.trailingAnchor, constant: 10),
+            currencySymbolView.trailingAnchor.constraint(equalTo: currencySymbolLabel.trailingAnchor, constant: 10),
+            currencySymbolView.heightAnchor.constraint(equalToConstant: 50),
+            
+            currencySymbolLabel.centerYAnchor.constraint(equalTo: currencySymbolView.centerYAnchor),
+            currencySymbolLabel.leadingAnchor.constraint(equalTo: currencySymbolView.leadingAnchor, constant: 10),
         ])
     }
 }

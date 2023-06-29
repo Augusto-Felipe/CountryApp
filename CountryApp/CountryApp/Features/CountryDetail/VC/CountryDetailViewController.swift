@@ -50,8 +50,7 @@ class CountryDetailViewController: UIViewController {
                 if let currency = child.value as? Aed {
                     if let currencyName = currency.name, let currencySymbol = currency.symbol {
                         self.screen.currencyLabel.text = currencyName
-                        print("Moeda:", currencyName)
-                        print("Símbolo:", currencySymbol)
+                        self.screen.currencySymbolLabel.text = currencySymbol
                     }
                 } else if let currency = child.value as? BAM {
                     print(currency)
