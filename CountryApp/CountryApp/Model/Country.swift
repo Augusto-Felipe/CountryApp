@@ -286,6 +286,8 @@ struct Currencies: Codable {
     }
 }
 
+extension Currencies.CodingKeys: CaseIterable {}
+
 // MARK: - Aed
 struct Aed: Codable {
     let name, symbol: String?

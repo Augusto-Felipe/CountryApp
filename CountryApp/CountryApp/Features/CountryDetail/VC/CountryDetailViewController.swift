@@ -41,8 +41,22 @@ class CountryDetailViewController: UIViewController {
     public func setupCountryDetail() {
         self.screen.countryNameLabel.text = country?.name?.official
         if let urlFlagImage: URL = URL(string: country?.flags?.png ?? "") {
-            screen.countryFlagImageView.af.setImage(withURL: urlFlagImage)
-            screen.countryFlagImageView.backgroundColor = .white
+            self.screen.countryFlagImageView.af.setImage(withURL: urlFlagImage)
+            self.screen.countryFlagImageView.backgroundColor = .white
+        }
+        if let currencies = country?.currencies {
+            let mirror = Mirror(reflecting: currencies)
+            for child in mirror.children {
+                if let currency = child.value as? Aed {
+                    if let currencyName = currency.name, let currencySymbol = currency.symbol {
+                        self.screen.currencyLabel.text = currencyName
+                        print("Moeda:", currencyName)
+                        print("Símbolo:", currencySymbol)
+                    }
+                } else if let currency = child.value as? BAM {
+                    print(currency)
+                }
+            }
         }
     }
 }
@@ -52,3 +66,5 @@ extension CountryDetailViewController: CountryDetailViewControllerScreenProtocol
         self.navigationController?.popViewController(animated: true)
     }
 }
+
+

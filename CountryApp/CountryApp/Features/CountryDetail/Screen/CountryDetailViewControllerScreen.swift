@@ -89,8 +89,35 @@ class CountryDetailViewControllerScreen: UIView {
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .red
+        scrollView.backgroundColor = .clear
         return scrollView
+    }()
+    
+    lazy var currencyTitleLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        lb.textColor = UIColor.lightGray
+        lb.text = "Moeda"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var currencyView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 22
+        view.backgroundColor = .cellColor
+        return view
+    }()
+    
+    lazy var currencyLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 12, weight: .bold)
+        lb.textColor = UIColor.appBlue
+        lb.textAlignment = .center
+        return lb
     }()
     
     @objc public func backButtonTapped() {
@@ -115,6 +142,9 @@ class CountryDetailViewControllerScreen: UIView {
         navigationBarView.addSubview(backButton)
         navigationBarView.addSubview(countryNameLabel)
         addSubview(countryFlagImageView)
+        scrollView.addSubview(currencyTitleLabel)
+        scrollView.addSubview(currencyView)
+        currencyView.addSubview(currencyLabel)
     }
     
     public func setupConstraints() {
@@ -152,6 +182,17 @@ class CountryDetailViewControllerScreen: UIView {
             scrollView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor),
+            
+            currencyTitleLabel.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            currencyTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
+            
+            currencyView.topAnchor.constraint(equalTo: currencyTitleLabel.bottomAnchor, constant: 10),
+            currencyView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            currencyView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            currencyView.heightAnchor.constraint(equalToConstant: 50),
+            
+            currencyLabel.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor),
+            currencyLabel.leadingAnchor.constraint(equalTo: currencyView.leadingAnchor, constant: 10),
         ])
     }
 }
