@@ -213,6 +213,23 @@ class CountryDetailViewControllerScreen: UIView {
         return lb
     }()
     
+    lazy var coatOfArmsTitle: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        lb.textColor = UIColor.lightGray
+        lb.text = "Brasão de Armas"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var coatOfArmsImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     @objc public func backButtonTapped() {
         self.delegate?.backButtonTapped()
     }
@@ -248,6 +265,8 @@ class CountryDetailViewControllerScreen: UIView {
         stackView.addArrangedSubview(currencySymbolView)
         currencyView.addSubview(currencyLabel)
         currencySymbolView.addSubview(currencySymbolLabel)
+        scrollView.addSubview(coatOfArmsTitle)
+        scrollView.addSubview(coatOfArmsImageView)
     }
     
     public func setupConstraints() {
@@ -291,7 +310,7 @@ class CountryDetailViewControllerScreen: UIView {
             scrollView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor),
             
             capitalTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
-            capitalTitleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: 40),
+            capitalTitleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: 50),
             
             capitalView.topAnchor.constraint(equalTo: capitalTitleLabel.bottomAnchor, constant: 10),
             capitalView.leadingAnchor.constraint(equalTo: capitalTitleLabel.leadingAnchor),
@@ -303,7 +322,7 @@ class CountryDetailViewControllerScreen: UIView {
             capitalLabel.trailingAnchor.constraint(equalTo: capitalView.trailingAnchor, constant: -10),
             
             continentTitleLabel.centerYAnchor.constraint(equalTo: capitalTitleLabel.centerYAnchor),
-            continentTitleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: -40),
+            continentTitleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: -50),
             
             continentView.topAnchor.constraint(equalTo: continentTitleLabel.bottomAnchor, constant: 10),
             continentView.leadingAnchor.constraint(equalTo: continentTitleLabel.leadingAnchor),
@@ -330,6 +349,14 @@ class CountryDetailViewControllerScreen: UIView {
             currencySymbolLabel.centerXAnchor.constraint(equalTo: currencySymbolView.centerXAnchor),
             currencySymbolLabel.leadingAnchor.constraint(equalTo: currencySymbolView.leadingAnchor, constant: 20),
             currencySymbolView.trailingAnchor.constraint(equalTo: currencySymbolView.trailingAnchor, constant: -20),
+            
+            coatOfArmsTitle.topAnchor.constraint(equalTo: currencyView.bottomAnchor, constant: 20),
+            coatOfArmsTitle.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
+            
+            coatOfArmsImageView.topAnchor.constraint(equalTo: coatOfArmsTitle.bottomAnchor, constant: 10),
+            coatOfArmsImageView.leadingAnchor.constraint(equalTo: countryFlagImageView.leadingAnchor),
+            coatOfArmsImageView.trailingAnchor.constraint(equalTo: countryFlagImageView.trailingAnchor),
+            coatOfArmsImageView.heightAnchor.constraint(equalTo: countryFlagImageView.heightAnchor),
         ])
     }
 }

@@ -54,8 +54,8 @@ class CountryDetailViewController: UIViewController {
                         self.screen.currencyLabel.text = currencyName
                         self.screen.currencySymbolLabel.text = currencySymbol
                     }
-                } else if let currency = child.value as? BAM {
-                    print(currency)
+                } else if child.value is BAM {
+                    self.screen.currencyLabel.text = "Erro"
                 }
             }
         }
@@ -72,6 +72,16 @@ class CountryDetailViewController: UIViewController {
         
         if let continent = country?.continents?[0].rawValue {
             self.screen.continentLabel.text = continent
+        }
+        
+        if let urlCoatOfArmsImage: URL = URL(string: country?.coatOfArms?.png ?? "") {
+            self.screen.coatOfArmsImageView.af.setImage(withURL: urlCoatOfArmsImage)
+            self.screen.coatOfArmsImageView.backgroundColor = .white
+        } else {
+            if let urlFlagImage: URL = URL(string: country?.flags?.png ?? "") {
+                self.screen.coatOfArmsImageView.af.setImage(withURL: urlFlagImage)
+                self.screen.coatOfArmsImageView.backgroundColor = .white
+            }
         }
     }
 }
