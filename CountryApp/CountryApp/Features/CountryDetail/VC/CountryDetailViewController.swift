@@ -40,10 +40,12 @@ class CountryDetailViewController: UIViewController {
     
     public func setupCountryDetail() {
         self.screen.countryNameLabel.text = country?.name?.official
+        
         if let urlFlagImage: URL = URL(string: country?.flags?.png ?? "") {
             self.screen.countryFlagImageView.af.setImage(withURL: urlFlagImage)
             self.screen.countryFlagImageView.backgroundColor = .white
         }
+        
         if let currencies = country?.currencies {
             let mirror = Mirror(reflecting: currencies)
             for child in mirror.children {
@@ -57,10 +59,19 @@ class CountryDetailViewController: UIViewController {
                 }
             }
         }
+        
         if let countryCapital = country?.capital?[0] {
             self.screen.capitalLabel.text = countryCapital
         } else {
             self.screen.capitalLabel.text = "Erro"
+        }
+        
+        if let ptTranslation = country?.translations?["por"]?.official {
+            self.screen.altSpellingLabel.text = ptTranslation
+        }
+        
+        if let continent = country?.continents?[0].rawValue {
+            self.screen.continentLabel.text = continent
         }
     }
 }

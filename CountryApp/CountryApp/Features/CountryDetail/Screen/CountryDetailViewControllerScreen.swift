@@ -79,6 +79,15 @@ class CountryDetailViewControllerScreen: UIView {
         return view
     }()
     
+    lazy var altSpellingLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        lb.textColor = UIColor.lightGray
+        lb.textAlignment = .center
+        return lb
+    }()
+    
     lazy var countryFlagImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -116,7 +125,33 @@ class CountryDetailViewControllerScreen: UIView {
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         lb.textColor = UIColor.appBlue
-        lb.text = "Teste"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var continentTitleLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        lb.textColor = UIColor.lightGray
+        lb.text = "Continente"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var continentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 22
+        view.backgroundColor = .cellColor
+        return view
+    }()
+    
+    lazy var continentLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        lb.textColor = UIColor.appBlue
         lb.textAlignment = .center
         return lb
     }()
@@ -200,9 +235,13 @@ class CountryDetailViewControllerScreen: UIView {
         navigationBarView.addSubview(backButton)
         navigationBarView.addSubview(countryNameLabel)
         addSubview(countryFlagImageView)
+        addSubview(altSpellingLabel)
         scrollView.addSubview(capitalTitleLabel)
         scrollView.addSubview(capitalView)
         capitalView.addSubview(capitalLabel)
+        scrollView.addSubview(continentTitleLabel)
+        scrollView.addSubview(continentView)
+        continentView.addSubview(continentLabel)
         scrollView.addSubview(currencyTitleLabel)
         scrollView.addSubview(stackView)
         stackView.addArrangedSubview(currencyView)
@@ -242,13 +281,17 @@ class CountryDetailViewControllerScreen: UIView {
             countryFlagImageView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             countryFlagImageView.bottomAnchor.constraint(equalTo: flagCardView.bottomAnchor),
             
-            scrollView.topAnchor.constraint(equalTo: flagCardView.bottomAnchor, constant: 20),
+            altSpellingLabel.topAnchor.constraint(equalTo: flagCardView.bottomAnchor, constant: 10),
+            altSpellingLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor),
+            altSpellingLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor),
+            
+            scrollView.topAnchor.constraint(equalTo: altSpellingLabel.bottomAnchor, constant: 20),
             scrollView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor),
             
             capitalTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
-            capitalTitleLabel.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
+            capitalTitleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: 40),
             
             capitalView.topAnchor.constraint(equalTo: capitalTitleLabel.bottomAnchor, constant: 10),
             capitalView.leadingAnchor.constraint(equalTo: capitalTitleLabel.leadingAnchor),
@@ -258,6 +301,18 @@ class CountryDetailViewControllerScreen: UIView {
             capitalLabel.centerYAnchor.constraint(equalTo: capitalView.centerYAnchor),
             capitalLabel.leadingAnchor.constraint(equalTo: capitalView.leadingAnchor, constant: 10),
             capitalLabel.trailingAnchor.constraint(equalTo: capitalView.trailingAnchor, constant: -10),
+            
+            continentTitleLabel.centerYAnchor.constraint(equalTo: capitalTitleLabel.centerYAnchor),
+            continentTitleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: -40),
+            
+            continentView.topAnchor.constraint(equalTo: continentTitleLabel.bottomAnchor, constant: 10),
+            continentView.leadingAnchor.constraint(equalTo: continentTitleLabel.leadingAnchor),
+            continentView.trailingAnchor.constraint(equalTo: continentTitleLabel.trailingAnchor),
+            continentView.heightAnchor.constraint(equalToConstant: 50),
+            
+            continentLabel.centerYAnchor.constraint(equalTo: continentView.centerYAnchor),
+            continentLabel.leadingAnchor.constraint(equalTo: continentView.leadingAnchor, constant: 10),
+            continentLabel.trailingAnchor.constraint(equalTo: continentView.trailingAnchor, constant: -10),
             
             currencyTitleLabel.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
             currencyTitleLabel.topAnchor.constraint(equalTo: capitalView.bottomAnchor, constant: 10),
