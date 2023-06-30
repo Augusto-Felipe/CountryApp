@@ -16,6 +16,13 @@ class CountryDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews();
+        
+        self.screen.scrollView.frame = self.view.bounds;
+        self.screen.scrollView.contentSize.height = 3000;
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

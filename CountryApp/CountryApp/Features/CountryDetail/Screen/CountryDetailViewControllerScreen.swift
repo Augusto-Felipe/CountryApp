@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapKit
 
 protocol CountryDetailViewControllerScreenProtocol: AnyObject {
     func backButtonTapped()
@@ -98,8 +99,18 @@ class CountryDetailViewControllerScreen: UIView {
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.backgroundColor = .clear
+        scrollView.backgroundColor = .white
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.isScrollEnabled = true
         return scrollView
+    }()
+    
+    lazy var contentView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        return view
     }()
     
     lazy var capitalTitleLabel: UILabel = {
@@ -167,7 +178,7 @@ class CountryDetailViewControllerScreen: UIView {
     }()
     
     let stackView:UIStackView = {
-       let stack = UIStackView()
+        let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.distribution = .fill
         stack.axis = .horizontal
@@ -230,6 +241,22 @@ class CountryDetailViewControllerScreen: UIView {
         return imageView
     }()
     
+    lazy var locationLabelTitle: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        lb.textColor = UIColor.lightGray
+        lb.text = "Localização"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var map: MKMapView = {
+        let map = MKMapView()
+        map.translatesAutoresizingMaskIntoConstraints = false
+        return map
+    }()
+    
     @objc public func backButtonTapped() {
         self.delegate?.backButtonTapped()
     }
@@ -253,20 +280,23 @@ class CountryDetailViewControllerScreen: UIView {
         navigationBarView.addSubview(countryNameLabel)
         addSubview(countryFlagImageView)
         addSubview(altSpellingLabel)
-        scrollView.addSubview(capitalTitleLabel)
-        scrollView.addSubview(capitalView)
+        scrollView.addSubview(contentView)
+        contentView.addSubview(capitalTitleLabel)
+        contentView.addSubview(capitalView)
         capitalView.addSubview(capitalLabel)
-        scrollView.addSubview(continentTitleLabel)
-        scrollView.addSubview(continentView)
+        contentView.addSubview(continentTitleLabel)
+        contentView.addSubview(continentView)
         continentView.addSubview(continentLabel)
-        scrollView.addSubview(currencyTitleLabel)
-        scrollView.addSubview(stackView)
+        contentView.addSubview(currencyTitleLabel)
+        contentView.addSubview(stackView)
         stackView.addArrangedSubview(currencyView)
         stackView.addArrangedSubview(currencySymbolView)
         currencyView.addSubview(currencyLabel)
         currencySymbolView.addSubview(currencySymbolLabel)
-        scrollView.addSubview(coatOfArmsTitle)
-        scrollView.addSubview(coatOfArmsImageView)
+        contentView.addSubview(coatOfArmsTitle)
+        contentView.addSubview(coatOfArmsImageView)
+        contentView.addSubview(locationLabelTitle)
+        contentView.addSubview(map)
     }
     
     public func setupConstraints() {
@@ -309,8 +339,13 @@ class CountryDetailViewControllerScreen: UIView {
             scrollView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: detailView.bottomAnchor),
             
-            capitalTitleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 10),
-            capitalTitleLabel.leadingAnchor.constraint(equalTo: detailView.leadingAnchor, constant: 50),
+            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            
+            capitalTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            capitalTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             
             capitalView.topAnchor.constraint(equalTo: capitalTitleLabel.bottomAnchor, constant: 10),
             capitalView.leadingAnchor.constraint(equalTo: capitalTitleLabel.leadingAnchor),
@@ -321,8 +356,8 @@ class CountryDetailViewControllerScreen: UIView {
             capitalLabel.leadingAnchor.constraint(equalTo: capitalView.leadingAnchor, constant: 10),
             capitalLabel.trailingAnchor.constraint(equalTo: capitalView.trailingAnchor, constant: -10),
             
-            continentTitleLabel.centerYAnchor.constraint(equalTo: capitalTitleLabel.centerYAnchor),
-            continentTitleLabel.trailingAnchor.constraint(equalTo: detailView.trailingAnchor, constant: -50),
+            continentTitleLabel.topAnchor.constraint(equalTo: capitalTitleLabel.topAnchor),
+            continentTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             
             continentView.topAnchor.constraint(equalTo: continentTitleLabel.bottomAnchor, constant: 10),
             continentView.leadingAnchor.constraint(equalTo: continentTitleLabel.leadingAnchor),
@@ -333,12 +368,12 @@ class CountryDetailViewControllerScreen: UIView {
             continentLabel.leadingAnchor.constraint(equalTo: continentView.leadingAnchor, constant: 10),
             continentLabel.trailingAnchor.constraint(equalTo: continentView.trailingAnchor, constant: -10),
             
-            currencyTitleLabel.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
+            currencyTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             currencyTitleLabel.topAnchor.constraint(equalTo: capitalView.bottomAnchor, constant: 10),
             
             stackView.topAnchor.constraint(equalTo: currencyTitleLabel.bottomAnchor, constant: 10),
-            stackView.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             stackView.heightAnchor.constraint(equalToConstant: 50),
             
             currencyLabel.centerYAnchor.constraint(equalTo: currencyView.centerYAnchor),
@@ -348,15 +383,23 @@ class CountryDetailViewControllerScreen: UIView {
             currencySymbolLabel.centerYAnchor.constraint(equalTo: currencySymbolView.centerYAnchor),
             currencySymbolLabel.centerXAnchor.constraint(equalTo: currencySymbolView.centerXAnchor),
             currencySymbolLabel.leadingAnchor.constraint(equalTo: currencySymbolView.leadingAnchor, constant: 20),
-            currencySymbolView.trailingAnchor.constraint(equalTo: currencySymbolView.trailingAnchor, constant: -20),
+            currencySymbolLabel.trailingAnchor.constraint(equalTo: currencySymbolView.trailingAnchor, constant: -20),
             
             coatOfArmsTitle.topAnchor.constraint(equalTo: currencyView.bottomAnchor, constant: 20),
-            coatOfArmsTitle.centerXAnchor.constraint(equalTo: detailView.centerXAnchor),
+            coatOfArmsTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
             coatOfArmsImageView.topAnchor.constraint(equalTo: coatOfArmsTitle.bottomAnchor, constant: 10),
-            coatOfArmsImageView.leadingAnchor.constraint(equalTo: countryFlagImageView.leadingAnchor),
-            coatOfArmsImageView.trailingAnchor.constraint(equalTo: countryFlagImageView.trailingAnchor),
+            coatOfArmsImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            coatOfArmsImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             coatOfArmsImageView.heightAnchor.constraint(equalTo: countryFlagImageView.heightAnchor),
+            
+            locationLabelTitle.topAnchor.constraint(equalTo: coatOfArmsImageView.bottomAnchor, constant: 20),
+            locationLabelTitle.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            
+            map.topAnchor.constraint(equalTo: locationLabelTitle.bottomAnchor, constant: 10),
+            map.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
+            map.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
+            map.heightAnchor.constraint(equalToConstant: 250),
         ])
     }
 }
