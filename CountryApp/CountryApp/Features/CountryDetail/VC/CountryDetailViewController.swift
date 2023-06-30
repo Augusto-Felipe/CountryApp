@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import CoreLocation
 
 class CountryDetailViewController: UIViewController {
     
     var country: Country?
+    var mapService: MapService?
     
     init(country: Country) {
         self.country = country
@@ -42,6 +44,8 @@ class CountryDetailViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .cellColor
         self.setupCountryDetail()
+        self.mapService = MapService()
+        #warning("Continue map configuration")
         self.screen.delegate(delegate: self)
     }
     
@@ -90,6 +94,7 @@ class CountryDetailViewController: UIViewController {
                 self.screen.coatOfArmsImageView.backgroundColor = .white
             }
         }
+        
     }
 }
 
@@ -99,4 +104,6 @@ extension CountryDetailViewController: CountryDetailViewControllerScreenProtocol
     }
 }
 
-
+extension CountryDetailViewController: CLLocationManagerDelegate {
+    
+}

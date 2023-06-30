@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50126A272A4F6D2F0065967C /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50126A262A4F6D2F0065967C /* MapService.swift */; };
 		504365A82A4BDF56001030E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504365A72A4BDF56001030E9 /* LaunchScreen.storyboard */; };
 		504365AA2A4BE12B001030E9 /* brasil-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 504365A92A4BE12B001030E9 /* brasil-logo.png */; };
 		5052235C2A4A2F950034AD0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052235B2A4A2F950034AD0F /* AppDelegate.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		50126A262A4F6D2F0065967C /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		504365A72A4BDF56001030E9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504365A92A4BE12B001030E9 /* brasil-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brasil-logo.png"; sourceTree = "<group>"; };
 		505223582A4A2F950034AD0F /* CountryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				5052237A2A4A30210034AD0F /* CountryService.swift */,
+				50126A262A4F6D2F0065967C /* MapService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				505223A62A4A30210034AD0F /* Country.swift in Sources */,
 				505223AA2A4A30210034AD0F /* CountriesByContinentCollectionViewCell.swift in Sources */,
 				5093AE032A4C8E1B00FB44CA /* UIView+Extension.swift in Sources */,
+				50126A272A4F6D2F0065967C /* MapService.swift in Sources */,
 				505223AD2A4A30210034AD0F /* CountryDetailViewController.swift in Sources */,
 				505223A92A4A30210034AD0F /* CountriesByContinentCollectionViewCellScreen.swift in Sources */,
 				505223A52A4A30210034AD0F /* UIColor+Extension.swift in Sources */,
