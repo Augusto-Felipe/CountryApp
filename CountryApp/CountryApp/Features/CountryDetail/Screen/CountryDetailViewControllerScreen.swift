@@ -399,7 +399,7 @@ class CountryDetailViewControllerScreen: UIView {
             map.topAnchor.constraint(equalTo: locationLabelTitle.bottomAnchor, constant: 10),
             map.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
             map.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
-            map.heightAnchor.constraint(equalToConstant: 250),
+            map.heightAnchor.constraint(equalToConstant: 220),
         ])
     }
 }
