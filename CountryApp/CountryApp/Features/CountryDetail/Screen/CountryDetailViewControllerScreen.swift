@@ -254,6 +254,8 @@ class CountryDetailViewControllerScreen: UIView {
     lazy var map: MKMapView = {
         let map = MKMapView()
         map.translatesAutoresizingMaskIntoConstraints = false
+        map.clipsToBounds = true
+        map.layer.cornerRadius = 20
         return map
     }()
     

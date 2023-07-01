@@ -43,9 +43,8 @@ class CountryDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .cellColor
-        self.setupCountryDetail()
         self.mapService = MapService()
-        #warning("Continue map configuration")
+        self.setupCountryDetail()
         self.screen.delegate(delegate: self)
     }
     
@@ -95,6 +94,10 @@ class CountryDetailViewController: UIViewController {
             }
         }
         
+        if let lat = country?.latlng?[0], let long = country?.latlng?[1] {
+            print("LAT -> \(lat) LONG -> \(long)")
+            self.mapService?.setLocation(viewController: self, map: self.screen.map, latitude: lat, longitude: long)
+        }
     }
 }
 
