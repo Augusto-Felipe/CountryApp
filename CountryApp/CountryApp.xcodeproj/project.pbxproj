@@ -38,6 +38,7 @@
 		50E515FA2A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E515F92A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift */; };
 		50E515FF2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E515FE2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift */; };
 		50E516012A50BB4500DDDCA6 /* CountriesByContinentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E516002A50BB4500DDDCA6 /* CountriesByContinentViewController.swift */; };
+		50E516072A50C48000DDDCA6 /* CountriesByContinentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E516062A50C48000DDDCA6 /* CountriesByContinentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		50E515F92A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByContinentCollectionViewCellScreen.swift; sourceTree = "<group>"; };
 		50E515FE2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByContinentViewControllerScreen.swift; sourceTree = "<group>"; };
 		50E516002A50BB4500DDDCA6 /* CountriesByContinentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByContinentViewController.swift; sourceTree = "<group>"; };
+		50E516062A50C48000DDDCA6 /* CountriesByContinentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByContinentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -365,6 +367,7 @@
 		50E515FB2A50B9D900DDDCA6 /* CountriesByContinent */ = {
 			isa = PBXGroup;
 			children = (
+				50E516032A50C44800DDDCA6 /* VieModel */,
 				50E516022A50C00700DDDCA6 /* Cell */,
 				50E515FD2A50BA6F00DDDCA6 /* Screen */,
 				50E515FC2A50BA6A00DDDCA6 /* VC */,
@@ -394,6 +397,14 @@
 				50E515F52A50B58200DDDCA6 /* CountriesByContinentCollectionViewCell */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		50E516032A50C44800DDDCA6 /* VieModel */ = {
+			isa = PBXGroup;
+			children = (
+				50E516062A50C48000DDDCA6 /* CountriesByContinentViewModel.swift */,
+			);
+			path = VieModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,6 +502,7 @@
 				505223B22A4A30210034AD0F /* AllCountriesViewController.swift in Sources */,
 				5052235E2A4A2F950034AD0F /* SceneDelegate.swift in Sources */,
 				505223AE2A4A30210034AD0F /* CountryDetailViewControllerScreen.swift in Sources */,
+				50E516072A50C48000DDDCA6 /* CountriesByContinentViewModel.swift in Sources */,
 				505223A62A4A30210034AD0F /* Country.swift in Sources */,
 				505223AA2A4A30210034AD0F /* ContinentCollectionViewCell.swift in Sources */,
 				50E515F82A50B66000DDDCA6 /* CountriesByContinentCollectionViewCell.swift in Sources */,

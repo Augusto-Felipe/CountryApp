@@ -38,7 +38,7 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AllCountriesCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: AllCountriesCollectionViewCell.identifier, for: indexPath) as? AllCountriesCollectionViewCell
-        cell?.setupCell(country: viewModel.loadCurrentImage(indexPath: indexPath))
+        cell?.setupCell(country: viewModel.loadCurrentCountry(indexPath: indexPath))
         return cell ?? UICollectionViewCell()
     }
     
@@ -47,7 +47,7 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = CountryDetailViewController(country: viewModel.loadCurrentImage(indexPath: indexPath))
+        let vc = CountryDetailViewController(country: viewModel.loadCurrentCountry(indexPath: indexPath))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
