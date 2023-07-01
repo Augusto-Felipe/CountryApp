@@ -132,11 +132,11 @@ class CountryDetailViewController: UIViewController {
         }
         
         if let urlCoatOfArmsImage: URL = URL(string: country?.coatOfArms?.png ?? "") {
-            self.screen.coatOfArmsImageView.af.setImage(withURL: urlCoatOfArmsImage)
+            self.screen.coatOfArmsImageView.af.setImage(withURL: urlCoatOfArmsImage, placeholderImage: UIImage(named: "threeButtons"))
             self.screen.coatOfArmsImageView.backgroundColor = .white
         } else {
             if let urlFlagImage: URL = URL(string: country?.flags?.png ?? "") {
-                self.screen.coatOfArmsImageView.af.setImage(withURL: urlFlagImage)
+                self.screen.coatOfArmsImageView.af.setImage(withURL: urlFlagImage, placeholderImage: UIImage(named: "threeButtons"))
                 self.screen.coatOfArmsImageView.backgroundColor = .white
             }
         }
