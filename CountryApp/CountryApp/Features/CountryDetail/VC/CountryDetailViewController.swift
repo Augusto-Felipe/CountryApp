@@ -95,7 +95,6 @@ class CountryDetailViewController: UIViewController {
         }
         
         if let lat = country?.latlng?[0], let long = country?.latlng?[1] {
-            print("LAT -> \(lat) LONG -> \(long)")
             self.mapService?.setLocation(viewController: self, map: self.screen.map, latitude: lat, longitude: long)
         }
     }
