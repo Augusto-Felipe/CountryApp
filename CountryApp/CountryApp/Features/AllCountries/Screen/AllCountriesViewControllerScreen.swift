@@ -20,7 +20,7 @@ class AllCountriesViewControllerScreen: UIView {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        lb.text = "Country App"
+        lb.text = "Todos os países"
         lb.textColor = UIColor.white
         lb.textAlignment = .center
         return lb

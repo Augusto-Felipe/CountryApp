@@ -11,7 +11,7 @@ import WebKit
 
 class CountryDetailViewController: UIViewController {
     
-    var webView: WKWebView?
+//    var webView: WKWebView?
     var country: Country?
     var mapService: MapService?
     
@@ -50,20 +50,49 @@ class CountryDetailViewController: UIViewController {
         self.screen.delegate(delegate: self)
     }
     
+    @objc func closeWebView() {
+        if let webView = self.view.subviews.first(where: { $0 is WKWebView }) as? WKWebView {
+            webView.removeFromSuperview()
+        }
+    }
+    
     func openPage(action: UIAlertAction) {
-        
-        // Pegando o title da nossa action
         guard let actionTitle = action.title else { return }
         
-        // Criar um url com o endereço do site, pegando o título da action e concatenado com https://
-        guard let url = URL(string: "https://www.\(actionTitle)") else { return }
-        
-        // Colocamos nossa string em um URLRequest
-        webView?.load(URLRequest(url: url))
-        
-        // Nos permite usar o swipe na tela
-        webView?.allowsBackForwardNavigationGestures = true
-        
+        if actionTitle == "Open Street Map" {
+            let webView = WKWebView(frame: self.view.bounds)
+            guard let url = URL(string: country?.maps?.openStreetMaps ?? "") else { return }
+            webView.load(URLRequest(url: url))
+            webView.allowsBackForwardNavigationGestures = true
+            self.view.addSubview(webView)
+            
+            let closeButton = UIButton(type: .system)
+            closeButton.setTitle("Fechar", for: .normal)
+            closeButton.setTitleColor(.white, for: .normal)
+            closeButton.backgroundColor = .appBlue
+            closeButton.clipsToBounds = true
+            closeButton.layer.cornerRadius = 10
+            closeButton.addTarget(self, action: #selector(closeWebView), for: .touchUpInside)
+            closeButton.frame = CGRect(x: self.view.bounds.width - 66, y: 36, width: 50, height: 30)
+            webView.addSubview(closeButton)
+            
+        } else if actionTitle == "Open Google Maps" {
+            let webView = WKWebView(frame: self.view.bounds)
+            guard let url = URL(string: country?.maps?.googleMaps ?? "") else { return }
+            webView.load(URLRequest(url: url))
+            webView.allowsBackForwardNavigationGestures = true
+            self.view.addSubview(webView)
+            
+            let closeButton = UIButton(type: .system)
+            closeButton.setTitle("Fechar", for: .normal)
+            closeButton.setTitleColor(.white, for: .normal)
+            closeButton.backgroundColor = .appBlue
+            closeButton.clipsToBounds = true
+            closeButton.layer.cornerRadius = 10
+            closeButton.addTarget(self, action: #selector(closeWebView), for: .touchUpInside)
+            closeButton.frame = CGRect(x: self.view.bounds.width - 66, y: 36, width: 50, height: 30)
+            webView.addSubview(closeButton)
+        }
     }
     
     public func setupCountryDetail() {
