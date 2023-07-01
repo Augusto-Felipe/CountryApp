@@ -1,5 +1,5 @@
 //
-//  AllCountriesViewControllerScreen.swift
+//  CountriesByContinentViewControllerScreen.swift
 //  FlagsApp
 //
 //  Created by Felipe Augusto Correia on 25/06/23.
@@ -7,8 +7,8 @@
 
 import UIKit
 
-class AllCountriesViewControllerScreen: UIView {
-    
+class ContinentsViewControllerScreen: UIView {
+
     lazy var navigationBarView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -20,7 +20,7 @@ class AllCountriesViewControllerScreen: UIView {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         lb.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        lb.text = "Todos os países"
+        lb.text = "Continentes"
         lb.textColor = UIColor.white
         lb.textAlignment = .center
         return lb
@@ -31,7 +31,7 @@ class AllCountriesViewControllerScreen: UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .clear
-        cv.register(AllCountriesCollectionViewCell.self, forCellWithReuseIdentifier: AllCountriesCollectionViewCell.identifier)
+        cv.register(ContinentCollectionViewCell.self, forCellWithReuseIdentifier: ContinentCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 24, bottom: 0, right: 24)
         layout.scrollDirection = .vertical
@@ -49,7 +49,7 @@ class AllCountriesViewControllerScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configCollectionView(delegate: UICollectionViewDelegate, datasource: UICollectionViewDataSource){
+    public func configCollectionView(delegate: UICollectionViewDelegate, datasource: UICollectionViewDataSource) {
         collectionView.delegate = delegate
         collectionView.dataSource = datasource
     }

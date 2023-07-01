@@ -15,7 +15,7 @@ class TabBarController: UITabBarController {
     
     private func setupTabBarController() {
         let allCountriesVC = UINavigationController(rootViewController: AllCountriesViewController())
-        let countriesByContinentVC = UINavigationController(rootViewController: CountriesByContinentViewController())
+        let countriesByContinentVC = UINavigationController(rootViewController: ContinentsViewController())
         let searchCountryVC = UINavigationController(rootViewController: SearchCountryViewController())
         self.setViewControllers([allCountriesVC, countriesByContinentVC,searchCountryVC], animated: false)
         self.tabBar.backgroundColor = .appBlue

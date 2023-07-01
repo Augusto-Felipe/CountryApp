@@ -11,7 +11,6 @@ import WebKit
 
 class CountryDetailViewController: UIViewController {
     
-//    var webView: WKWebView?
     var country: Country?
     var mapService: MapService?
     

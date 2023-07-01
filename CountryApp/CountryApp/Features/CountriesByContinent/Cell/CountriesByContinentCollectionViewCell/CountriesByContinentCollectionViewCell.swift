@@ -1,8 +1,8 @@
 //
 //  CountriesByContinentCollectionViewCell.swift
-//  FlagsApp
+//  CountryApp
 //
-//  Created by Felipe Augusto Correia on 25/06/23.
+//  Created by Felipe Augusto Correia on 01/07/23.
 //
 
 import UIKit
@@ -11,8 +11,8 @@ class CountriesByContinentCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = String(describing: CountriesByContinentCollectionViewCell.self)
     
-    lazy var screen: CountriesByContinentCollectionViewCellScreen = {
-        let screen = CountriesByContinentCollectionViewCellScreen()
+    lazy var screen: AllCountriesCollectionViewCellScreen = {
+        let screen = AllCountriesCollectionViewCellScreen()
         screen.translatesAutoresizingMaskIntoConstraints = false
         return screen
     }()
@@ -40,7 +40,11 @@ class CountriesByContinentCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    public func setupCell(continentName: String) {
-        self.screen.continentLabel.text  = continentName
+    public func setupCell(country: Country) {
+        if let urlFlagImage: URL = URL(string: country.flags?.png ?? "") {
+            screen.countryFlagImageView.af.setImage(withURL: urlFlagImage)
+            screen.countryFlagImageView.backgroundColor = .white
+        }
+        screen.countryNameLabel.text = country.name?.common
     }
 }
