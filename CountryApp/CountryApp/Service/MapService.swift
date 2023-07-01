@@ -27,9 +27,9 @@ class MapService {
         let latitudeDelta: CLLocationDegrees = 2.5
         let longitudeDelta: CLLocationDegrees = 2.5
         
-        let visualizacao: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
+        let visualization: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: latitudeDelta, longitudeDelta: longitudeDelta)
         
-        let region: MKCoordinateRegion = MKCoordinateRegion(center: location, span: visualizacao)
+        let region: MKCoordinateRegion = MKCoordinateRegion(center: location, span: visualization)
         
         map.setRegion(region, animated: true)
     }
