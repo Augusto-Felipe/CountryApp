@@ -10,6 +10,7 @@ import MapKit
 
 protocol CountryDetailViewControllerScreenProtocol: AnyObject {
     func backButtonTapped()
+    func openWebMapButtonTapped()
 }
 
 class CountryDetailViewControllerScreen: UIView {
@@ -259,8 +260,25 @@ class CountryDetailViewControllerScreen: UIView {
         return map
     }()
     
+    lazy var openWebMapButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Abrir mapa", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = .appBlue
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(openWebMapButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     @objc public func backButtonTapped() {
         self.delegate?.backButtonTapped()
+    }
+    
+    @objc public func openWebMapButtonTapped() {
+        self.delegate?.openWebMapButtonTapped()
     }
     
     override init(frame: CGRect) {
@@ -299,6 +317,7 @@ class CountryDetailViewControllerScreen: UIView {
         contentView.addSubview(coatOfArmsImageView)
         contentView.addSubview(locationLabelTitle)
         contentView.addSubview(map)
+        scrollView.addSubview(openWebMapButton)
     }
     
     public func setupConstraints() {
@@ -402,6 +421,11 @@ class CountryDetailViewControllerScreen: UIView {
             map.leadingAnchor.constraint(equalTo: flagCardView.leadingAnchor),
             map.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             map.heightAnchor.constraint(equalToConstant: 220),
+            
+            openWebMapButton.topAnchor.constraint(equalTo: map.bottomAnchor, constant: 10),
+            openWebMapButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            openWebMapButton.widthAnchor.constraint(equalToConstant: 100),
+            openWebMapButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }

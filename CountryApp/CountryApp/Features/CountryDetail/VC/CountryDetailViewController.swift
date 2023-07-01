@@ -7,9 +7,11 @@
 
 import UIKit
 import CoreLocation
+import WebKit
 
 class CountryDetailViewController: UIViewController {
     
+    var webView: WKWebView?
     var country: Country?
     var mapService: MapService?
     
@@ -46,6 +48,22 @@ class CountryDetailViewController: UIViewController {
         self.mapService = MapService()
         self.setupCountryDetail()
         self.screen.delegate(delegate: self)
+    }
+    
+    func openPage(action: UIAlertAction) {
+        
+        // Pegando o title da nossa action
+        guard let actionTitle = action.title else { return }
+        
+        // Criar um url com o endereço do site, pegando o título da action e concatenado com https://
+        guard let url = URL(string: "https://www.\(actionTitle)") else { return }
+        
+        // Colocamos nossa string em um URLRequest
+        webView?.load(URLRequest(url: url))
+        
+        // Nos permite usar o swipe na tela
+        webView?.allowsBackForwardNavigationGestures = true
+        
     }
     
     public func setupCountryDetail() {
@@ -101,6 +119,16 @@ class CountryDetailViewController: UIViewController {
 }
 
 extension CountryDetailViewController: CountryDetailViewControllerScreenProtocol {
+    func openWebMapButtonTapped() {
+        print(#function)
+        let ac = UIAlertController(title: "Open Page", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "Open Street Map", style: .default, handler: openPage))
+        ac.addAction(UIAlertAction(title: "Open Google Maps", style: .default, handler: openPage))
+        ac.addAction(UIAlertAction(title: "cancel", style: .cancel))
+        ac.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(ac, animated: true)
+    }
+    
     func backButtonTapped() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -109,3 +137,9 @@ extension CountryDetailViewController: CountryDetailViewControllerScreenProtocol
 extension CountryDetailViewController: CLLocationManagerDelegate {
     
 }
+
+//extension CountryDetailViewController: WKNavigationDelegate {
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        title = webView.title
+//    }
+//}
