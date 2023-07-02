@@ -8,9 +8,9 @@
 import UIKit
 
 class CountriesByContinentViewController: UIViewController {
-
+    
     var screen: CountriesByContinentViewControllerScreen?
-    var viewModel: CountriesByContinentViewModel = CountriesByContinentViewModel()
+    var viewModel: ContinentsViewModel = ContinentsViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -24,10 +24,12 @@ class CountriesByContinentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        self.viewModel.fetchRequest()
-        self.viewModel.delegate(delegate: self)
         self.screen?.delegate(delegate: self)
-        self.screen?.configCollectionView(delegate: self, datasource: self)
+        self.viewModel.delegate(delegate: self)
+    }
+    
+    func setupData(indexPath: Int) {
+        self.viewModel.fetchRequest(indexPath: indexPath)
     }
 }
 
@@ -59,8 +61,8 @@ extension CountriesByContinentViewController: CountriesByContinentViewController
     }
 }
 
-extension CountriesByContinentViewController: CountriesByContinentViewModelProtocol {
+extension CountriesByContinentViewController: ContinentsViewModelProtocol {
     func reloadCollectionView() {
-        self.screen?.collectionView.reloadData()
+        self.screen?.configCollectionView(delegate: self, datasource: self)
     }
 }

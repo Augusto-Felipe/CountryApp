@@ -166,8 +166,3 @@ extension CountryDetailViewController: CLLocationManagerDelegate {
     
 }
 
-//extension CountryDetailViewController: WKNavigationDelegate {
-//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        title = webView.title
-//    }
-//}
