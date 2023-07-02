@@ -16,6 +16,17 @@ class SearchCountryViewControllerScreen: UIView {
         return view
     }()
     
+    lazy var navigationTitleLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        lb.text = "Buscar"
+        lb.textColor = UIColor.white
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
@@ -28,6 +39,7 @@ class SearchCountryViewControllerScreen: UIView {
     
     public func addElements() {
         addSubview(navigationBarView)
+        navigationBarView.addSubview(navigationTitleLabel)
     }
     
     public func setupConstraints() {
@@ -36,6 +48,11 @@ class SearchCountryViewControllerScreen: UIView {
             navigationBarView.leadingAnchor.constraint(equalTo: leadingAnchor),
             navigationBarView.trailingAnchor.constraint(equalTo: trailingAnchor),
             navigationBarView.heightAnchor.constraint(equalToConstant: 110),
+            
+            navigationTitleLabel.centerXAnchor.constraint(equalTo: navigationBarView.centerXAnchor),
+            navigationTitleLabel.centerYAnchor.constraint(equalTo: navigationBarView.centerYAnchor, constant: 20),
+            
+            
         ])
     }
 }
