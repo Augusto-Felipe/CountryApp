@@ -58,7 +58,6 @@ class AllCountriesViewControllerScreen: UIView {
         addSubview(navigationBarView)
         navigationBarView.addSubview(navigationTitleLabel)
         addSubview(collectionView)
-        
     }
     
     public func setupConstraints() {

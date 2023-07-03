@@ -16,7 +16,6 @@ class AllCountriesViewModel {
     private var delegate: AllCountriesViewModelProtocol?
     private var service: CountryService = CountryService()
     private var countryList: [Country] = []
-    private var searchCountryList: [Country] = []
     
     public func delegate(delegate: AllCountriesViewModelProtocol) {
         self.delegate = delegate
@@ -36,7 +35,6 @@ class AllCountriesViewModel {
                 
             } else {
                 self.countryList = data ?? []
-                self.searchCountryList = data ?? []
                 self.delegate?.reloadCollectionView()
             }
         }

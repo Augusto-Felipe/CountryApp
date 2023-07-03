@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500884D02A534BEA00972A5C /* SearchCountryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500884CF2A534BEA00972A5C /* SearchCountryCollectionViewCell.swift */; };
+		500884D22A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500884D12A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift */; };
+		500884D52A534D5D00972A5C /* SearchCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500884D42A534D5D00972A5C /* SearchCountryViewModel.swift */; };
 		50126A272A4F6D2F0065967C /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50126A262A4F6D2F0065967C /* MapService.swift */; };
 		504365A82A4BDF56001030E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504365A72A4BDF56001030E9 /* LaunchScreen.storyboard */; };
 		504365AA2A4BE12B001030E9 /* brasil-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 504365A92A4BE12B001030E9 /* brasil-logo.png */; };
@@ -42,6 +45,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		500884CF2A534BEA00972A5C /* SearchCountryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCountryCollectionViewCell.swift; sourceTree = "<group>"; };
+		500884D12A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCountryCollectionViewCellScreen.swift; sourceTree = "<group>"; };
+		500884D42A534D5D00972A5C /* SearchCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCountryViewModel.swift; sourceTree = "<group>"; };
 		50126A262A4F6D2F0065967C /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
 		504365A72A4BDF56001030E9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504365A92A4BE12B001030E9 /* brasil-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brasil-logo.png"; sourceTree = "<group>"; };
@@ -89,6 +95,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		500884CB2A534B9600972A5C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				500884CD2A534BB800972A5C /* SearchCountryCollectionViewCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		500884CD2A534BB800972A5C /* SearchCountryCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				500884CE2A534BC800972A5C /* Screen */,
+				500884CF2A534BEA00972A5C /* SearchCountryCollectionViewCell.swift */,
+			);
+			path = SearchCountryCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		500884CE2A534BC800972A5C /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				500884D12A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		500884D32A534D4900972A5C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				500884D42A534D5D00972A5C /* SearchCountryViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5052234F2A4A2F950034AD0F = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +220,8 @@
 		505223832A4A30210034AD0F /* SearchCountry */ = {
 			isa = PBXGroup;
 			children = (
+				500884D32A534D4900972A5C /* ViewModel */,
+				500884CB2A534B9600972A5C /* Cell */,
 				505223852A4A30210034AD0F /* VC */,
 				505223872A4A30210034AD0F /* Screen */,
 			);
@@ -489,14 +530,17 @@
 				505223AB2A4A30210034AD0F /* ContinentsViewController.swift in Sources */,
 				50E516012A50BB4500DDDCA6 /* CountriesByContinentViewController.swift in Sources */,
 				505223B02A4A30210034AD0F /* AllCountriesCollectionViewCellScreen.swift in Sources */,
+				500884D22A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift in Sources */,
 				505223AC2A4A30210034AD0F /* ContinentsViewControllerScreen.swift in Sources */,
 				505223B32A4A30210034AD0F /* AllCountriesViewControllerScreen.swift in Sources */,
 				505223A32A4A30210034AD0F /* CountryService.swift in Sources */,
 				50E515FA2A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift in Sources */,
 				505223B12A4A30210034AD0F /* AllCountriesCollectionViewCell.swift in Sources */,
 				50E515FF2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift in Sources */,
+				500884D02A534BEA00972A5C /* SearchCountryCollectionViewCell.swift in Sources */,
 				505223A42A4A30210034AD0F /* TabBarController.swift in Sources */,
 				5052235C2A4A2F950034AD0F /* AppDelegate.swift in Sources */,
+				500884D52A534D5D00972A5C /* SearchCountryViewModel.swift in Sources */,
 				5093AE012A4C8B7300FB44CA /* UIViewController+Extension.swift in Sources */,
 				505223AF2A4A30210034AD0F /* AllCountriesViewModel.swift in Sources */,
 				50A6246A2A51DDA200A34273 /* ContinentsViewModel.swift in Sources */,
