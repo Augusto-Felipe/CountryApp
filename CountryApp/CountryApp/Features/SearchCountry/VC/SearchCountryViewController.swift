@@ -24,6 +24,7 @@ class SearchCountryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
+        hideKeyboardWhenTappedAround()
         self.viewModel.delegate(delegate: self)
         self.screen?.textFieldDelegate(delegate: self)
     }
@@ -50,6 +51,11 @@ extension SearchCountryViewController: UITextFieldDelegate {
         guard let inputText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
         viewModel.fetchRequest()
         viewModel.searchCountry(with: inputText)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }
