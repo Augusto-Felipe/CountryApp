@@ -114,6 +114,33 @@ class CountryDetailViewControllerScreen: UIView {
         return view
     }()
     
+    lazy var populationTitleLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        lb.textColor = UIColor.lightGray
+        lb.text = "População"
+        lb.textAlignment = .center
+        return lb
+    }()
+    
+    lazy var populationView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 15
+        view.backgroundColor = .cellColor
+        return view
+    }()
+    
+    lazy var populationLabel: UILabel = {
+        let lb = UILabel()
+        lb.translatesAutoresizingMaskIntoConstraints = false
+        lb.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        lb.textColor = UIColor.appBlue
+        lb.textAlignment = .center
+        return lb
+    }()
+    
     lazy var capitalTitleLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
@@ -127,7 +154,7 @@ class CountryDetailViewControllerScreen: UIView {
     lazy var capitalView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 22
+        view.layer.cornerRadius = 15
         view.backgroundColor = .cellColor
         return view
     }()
@@ -154,7 +181,7 @@ class CountryDetailViewControllerScreen: UIView {
     lazy var continentView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 22
+        view.layer.cornerRadius = 15
         view.backgroundColor = .cellColor
         return view
     }()
@@ -301,6 +328,9 @@ class CountryDetailViewControllerScreen: UIView {
         addSubview(countryFlagImageView)
         addSubview(altSpellingLabel)
         scrollView.addSubview(contentView)
+        contentView.addSubview(populationTitleLabel)
+        contentView.addSubview(populationView)
+        populationView.addSubview(populationLabel)
         contentView.addSubview(capitalTitleLabel)
         contentView.addSubview(capitalView)
         capitalView.addSubview(capitalLabel)
@@ -365,32 +395,41 @@ class CountryDetailViewControllerScreen: UIView {
             contentView.trailingAnchor.constraint(equalTo: flagCardView.trailingAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             
-            capitalTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            capitalTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            populationTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            populationTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             
-            capitalView.topAnchor.constraint(equalTo: capitalTitleLabel.bottomAnchor, constant: 10),
-            capitalView.leadingAnchor.constraint(equalTo: capitalTitleLabel.leadingAnchor),
-            capitalView.trailingAnchor.constraint(equalTo: capitalTitleLabel.trailingAnchor),
-            capitalView.heightAnchor.constraint(equalToConstant: 50),
+            populationView.centerYAnchor.constraint(equalTo: populationTitleLabel.centerYAnchor),
+            populationView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            populationView.heightAnchor.constraint(equalToConstant: 30),
             
+            populationLabel.centerYAnchor.constraint(equalTo: populationView.centerYAnchor),
+            populationLabel.leadingAnchor.constraint(equalTo: populationView.leadingAnchor, constant: 10),
+            populationLabel.trailingAnchor.constraint(equalTo: populationView.trailingAnchor, constant: -10),
+            
+            capitalTitleLabel.topAnchor.constraint(equalTo: populationTitleLabel.bottomAnchor, constant: 15),
+            capitalTitleLabel.leadingAnchor.constraint(equalTo: populationTitleLabel.leadingAnchor),
+            
+            capitalView.centerYAnchor.constraint(equalTo: capitalTitleLabel.centerYAnchor),
+            capitalView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            capitalView.heightAnchor.constraint(equalToConstant: 30),
+
             capitalLabel.centerYAnchor.constraint(equalTo: capitalView.centerYAnchor),
             capitalLabel.leadingAnchor.constraint(equalTo: capitalView.leadingAnchor, constant: 10),
             capitalLabel.trailingAnchor.constraint(equalTo: capitalView.trailingAnchor, constant: -10),
             
-            continentTitleLabel.topAnchor.constraint(equalTo: capitalTitleLabel.topAnchor),
-            continentTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            continentTitleLabel.topAnchor.constraint(equalTo: capitalTitleLabel.bottomAnchor, constant: 15),
+            continentTitleLabel.leadingAnchor.constraint(equalTo: capitalTitleLabel.leadingAnchor),
             
-            continentView.topAnchor.constraint(equalTo: continentTitleLabel.bottomAnchor, constant: 10),
-            continentView.leadingAnchor.constraint(equalTo: continentTitleLabel.leadingAnchor),
-            continentView.trailingAnchor.constraint(equalTo: continentTitleLabel.trailingAnchor),
-            continentView.heightAnchor.constraint(equalToConstant: 50),
-            
+            continentView.centerYAnchor.constraint(equalTo: continentTitleLabel.centerYAnchor),
+            continentView.trailingAnchor.constraint(equalTo: capitalView.trailingAnchor),
+            continentView.heightAnchor.constraint(equalToConstant: 30),
+
             continentLabel.centerYAnchor.constraint(equalTo: continentView.centerYAnchor),
             continentLabel.leadingAnchor.constraint(equalTo: continentView.leadingAnchor, constant: 10),
             continentLabel.trailingAnchor.constraint(equalTo: continentView.trailingAnchor, constant: -10),
             
-            currencyTitleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            currencyTitleLabel.topAnchor.constraint(equalTo: capitalView.bottomAnchor, constant: 10),
+            currencyTitleLabel.leadingAnchor.constraint(equalTo: continentTitleLabel.leadingAnchor),
+            currencyTitleLabel.topAnchor.constraint(equalTo: continentTitleLabel.bottomAnchor, constant: 15),
             
             stackView.topAnchor.constraint(equalTo: currencyTitleLabel.bottomAnchor, constant: 10),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),

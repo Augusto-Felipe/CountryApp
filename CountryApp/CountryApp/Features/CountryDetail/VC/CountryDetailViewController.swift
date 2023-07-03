@@ -23,7 +23,8 @@ class CountryDetailViewController: UIViewController {
         super.viewWillLayoutSubviews();
         
         self.screen.scrollView.frame = self.view.bounds;
-        self.screen.scrollView.contentSize.height = 3000;
+        self.screen.scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.screen.scrollView.contentSize.height = 800;
     }
     
     required init?(coder: NSCoder) {
@@ -142,6 +143,11 @@ class CountryDetailViewController: UIViewController {
         
         if let lat = country?.latlng?[0], let long = country?.latlng?[1] {
             self.mapService?.setLocation(viewController: self, map: self.screen.map, latitude: lat, longitude: long)
+        }
+        
+        if let population = country?.population {
+            let stringPopulation = String(population)
+            self.screen.populationLabel.text = stringPopulation
         }
     }
 }
