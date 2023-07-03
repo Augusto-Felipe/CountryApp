@@ -27,6 +27,7 @@ class SearchCountryViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         self.viewModel.delegate(delegate: self)
         self.screen?.textFieldDelegate(delegate: self)
+        viewModel.fetchRequest()
     }
 }
 
@@ -49,7 +50,6 @@ extension SearchCountryViewController: UICollectionViewDelegate, UICollectionVie
 extension SearchCountryViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         guard let inputText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return false }
-        viewModel.fetchRequest()
         viewModel.searchCountry(with: inputText)
         return true
     }
