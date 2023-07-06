@@ -38,6 +38,8 @@
 		5093AE012A4C8B7300FB44CA /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5093AE002A4C8B7300FB44CA /* UIViewController+Extension.swift */; };
 		5093AE032A4C8E1B00FB44CA /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5093AE022A4C8E1B00FB44CA /* UIView+Extension.swift */; };
 		50A6246A2A51DDA200A34273 /* ContinentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A624692A51DDA200A34273 /* ContinentsViewModel.swift */; };
+		50BC640A2A57435500204C37 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC64092A57435500204C37 /* FavoritesViewController.swift */; };
+		50BC640C2A57437000204C37 /* FavoritesViewControllerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BC640B2A57437000204C37 /* FavoritesViewControllerScreen.swift */; };
 		50E515F82A50B66000DDDCA6 /* CountriesByContinentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E515F72A50B66000DDDCA6 /* CountriesByContinentCollectionViewCell.swift */; };
 		50E515FA2A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E515F92A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift */; };
 		50E515FF2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E515FE2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift */; };
@@ -76,6 +78,8 @@
 		5093AE002A4C8B7300FB44CA /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		5093AE022A4C8E1B00FB44CA /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		50A624692A51DDA200A34273 /* ContinentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentsViewModel.swift; sourceTree = "<group>"; };
+		50BC64092A57435500204C37 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		50BC640B2A57437000204C37 /* FavoritesViewControllerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewControllerScreen.swift; sourceTree = "<group>"; };
 		50E515F72A50B66000DDDCA6 /* CountriesByContinentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByContinentCollectionViewCell.swift; sourceTree = "<group>"; };
 		50E515F92A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByContinentCollectionViewCellScreen.swift; sourceTree = "<group>"; };
 		50E515FE2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesByContinentViewControllerScreen.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 				505223912A4A30210034AD0F /* CountryDetail */,
 				505223882A4A30210034AD0F /* Continents */,
 				50E515FB2A50B9D900DDDCA6 /* CountriesByContinent */,
+				50BC64062A57431E00204C37 /* Favorites */,
 				505223832A4A30210034AD0F /* SearchCountry */,
 			);
 			path = Features;
@@ -388,6 +393,31 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		50BC64062A57431E00204C37 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				50BC64082A57433700204C37 /* Screen */,
+				50BC64072A57433100204C37 /* VC */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		50BC64072A57433100204C37 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				50BC64092A57435500204C37 /* FavoritesViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		50BC64082A57433700204C37 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				50BC640B2A57437000204C37 /* FavoritesViewControllerScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
 		50E515F22A50AE0500DDDCA6 /* ContinentCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,7 +573,9 @@
 				500884D52A534D5D00972A5C /* SearchCountryViewModel.swift in Sources */,
 				5093AE012A4C8B7300FB44CA /* UIViewController+Extension.swift in Sources */,
 				505223AF2A4A30210034AD0F /* AllCountriesViewModel.swift in Sources */,
+				50BC640C2A57437000204C37 /* FavoritesViewControllerScreen.swift in Sources */,
 				50A6246A2A51DDA200A34273 /* ContinentsViewModel.swift in Sources */,
+				50BC640A2A57435500204C37 /* FavoritesViewController.swift in Sources */,
 				505223B22A4A30210034AD0F /* AllCountriesViewController.swift in Sources */,
 				5052235E2A4A2F950034AD0F /* SceneDelegate.swift in Sources */,
 				505223AE2A4A30210034AD0F /* CountryDetailViewControllerScreen.swift in Sources */,
