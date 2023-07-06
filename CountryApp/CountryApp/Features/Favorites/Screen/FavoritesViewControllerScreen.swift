@@ -76,5 +76,4 @@ class FavoritesViewControllerScreen: UIView {
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
         ])
     }
-    
 }

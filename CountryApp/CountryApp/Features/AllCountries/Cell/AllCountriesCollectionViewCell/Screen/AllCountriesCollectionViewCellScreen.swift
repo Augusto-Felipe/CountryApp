@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol AllCountriesCollectionViewCellScreenProtocol: AnyObject {
+    func favoriteButtonTapped()
+}
+
 class AllCountriesCollectionViewCellScreen: UIView {
+    
+    var delegate: AllCountriesCollectionViewCellScreenProtocol?
+    
+    
     
     lazy var cardView: UIView = {
         let view = UIView()
@@ -38,6 +46,14 @@ class AllCountriesCollectionViewCellScreen: UIView {
         lb.numberOfLines = 0
         return lb
     }()
+    
+    lazy var favoriteImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate)
+        imageView.tintColor = .appBlue
+        return imageView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,6 +69,7 @@ class AllCountriesCollectionViewCellScreen: UIView {
         addSubview(cardView)
         cardView.addSubview(countryFlagImageView)
         cardView.addSubview(countryNameLabel)
+        cardView.addSubview(favoriteImageView)
     }
     
     public func setupConstraints() {
@@ -70,6 +87,11 @@ class AllCountriesCollectionViewCellScreen: UIView {
             countryNameLabel.leadingAnchor.constraint(equalTo: countryFlagImageView.trailingAnchor, constant: 20),
             countryNameLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
             countryNameLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
+            
+            favoriteImageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10),
+            favoriteImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -15),
+            favoriteImageView.widthAnchor.constraint(equalToConstant: 30),
+            favoriteImageView.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
 }
