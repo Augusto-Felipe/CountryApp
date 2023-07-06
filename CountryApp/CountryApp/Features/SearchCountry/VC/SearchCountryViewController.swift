@@ -45,6 +45,11 @@ extension SearchCountryViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width - 25, height: 100)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = CountryDetailViewController(country: viewModel.loadCurrentCountry(indexPath: indexPath))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension SearchCountryViewController: UITextFieldDelegate {

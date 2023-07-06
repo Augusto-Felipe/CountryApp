@@ -50,8 +50,8 @@ extension CountriesByContinentViewController: UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let vc = CountryDetailViewController(country: viewModel.loadCurrentImage(indexPath: indexPath))
-//        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = CountryDetailViewController(country: viewModel.loadCurrentCountry(indexPath: indexPath))
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

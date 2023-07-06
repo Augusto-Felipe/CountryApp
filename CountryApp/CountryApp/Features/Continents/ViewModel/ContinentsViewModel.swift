@@ -86,7 +86,7 @@ class ContinentsViewModel {
                 }
                 
                 self.delegate?.reloadCollectionView()
-                
+    
             }
         }
     }
