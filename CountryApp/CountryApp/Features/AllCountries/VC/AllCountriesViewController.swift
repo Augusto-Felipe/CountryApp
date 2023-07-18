@@ -57,3 +57,4 @@ extension AllCountriesViewController: AllCountriesViewModelProtocol {
         self.screen?.collectionView.reloadData()
     }
 }
+

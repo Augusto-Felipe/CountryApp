@@ -7,15 +7,7 @@
 
 import UIKit
 
-protocol AllCountriesCollectionViewCellScreenProtocol: AnyObject {
-    func favoriteButtonTapped()
-}
-
 class AllCountriesCollectionViewCellScreen: UIView {
-    
-    var delegate: AllCountriesCollectionViewCellScreenProtocol?
-    
-    
     
     lazy var cardView: UIView = {
         let view = UIView()
@@ -47,14 +39,15 @@ class AllCountriesCollectionViewCellScreen: UIView {
         return lb
     }()
     
-    lazy var favoriteImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate)
-        imageView.tintColor = .appBlue
-        return imageView
+    lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "star"), for: .normal)
+        button.tintColor = .appBlue
+        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        return button
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
@@ -65,11 +58,36 @@ class AllCountriesCollectionViewCellScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc public func favoriteButtonTapped() {
+        if isFavoriteTapped() {
+            favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            #warning("salvar favorito")
+        } else {
+            favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+            #warning("excluir favorito")
+        }
+    }
+    
+    public func isFavoriteTapped() -> Bool {
+        if let currentImage = favoriteButton.currentImage {
+            let desiredImage = UIImage(systemName: "star")
+            let isImageEqual = currentImage.isEqual(desiredImage)
+            
+            if isImageEqual {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
     public func addElements() {
         addSubview(cardView)
         cardView.addSubview(countryFlagImageView)
         cardView.addSubview(countryNameLabel)
-        cardView.addSubview(favoriteImageView)
+        cardView.addSubview(favoriteButton)
     }
     
     public func setupConstraints() {
@@ -88,10 +106,10 @@ class AllCountriesCollectionViewCellScreen: UIView {
             countryNameLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
             countryNameLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
             
-            favoriteImageView.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10),
-            favoriteImageView.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -15),
-            favoriteImageView.widthAnchor.constraint(equalToConstant: 30),
-            favoriteImageView.heightAnchor.constraint(equalToConstant: 30),
+            favoriteButton.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10),
+            favoriteButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -15),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 30),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
 }
