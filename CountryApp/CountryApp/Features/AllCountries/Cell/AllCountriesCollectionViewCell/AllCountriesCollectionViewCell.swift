@@ -11,6 +11,8 @@ import AlamofireImage
 class AllCountriesCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = String(describing: AllCountriesCollectionViewCell.self)
+    public var saveFavorite: (() -> Void)?
+
     
     lazy var screen: AllCountriesCollectionViewCellScreen = {
         let screen = AllCountriesCollectionViewCellScreen()
@@ -20,6 +22,7 @@ class AllCountriesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        screen.delegate(delegate: self)
         addElements()
         setupConstraints()
     }
@@ -47,5 +50,33 @@ class AllCountriesCollectionViewCell: UICollectionViewCell {
             screen.countryFlagImageView.backgroundColor = .white
         }
         screen.countryNameLabel.text = country.name?.common
+    }
+    
+    public func isFavoriteTapped() -> Bool {
+        if let currentImage = screen.favoriteButton.currentImage {
+            let desiredImage = UIImage(systemName: "star")
+            let isImageEqual = currentImage.isEqual(desiredImage)
+            
+            if isImageEqual {
+                screen.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                return true
+            } else {
+                screen.favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+}
+
+extension AllCountriesCollectionViewCell: AllCountriesCollectionViewCellScreenProtocol {
+    func favoriteButtonTapped() {
+        if isFavoriteTapped() {
+            saveFavorite?()
+        } else {
+            #warning("excluir favorito")
+        }
     }
 }

@@ -11,6 +11,10 @@
 		500884D22A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500884D12A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift */; };
 		500884D52A534D5D00972A5C /* SearchCountryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500884D42A534D5D00972A5C /* SearchCountryViewModel.swift */; };
 		50126A272A4F6D2F0065967C /* MapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50126A262A4F6D2F0065967C /* MapService.swift */; };
+		503F839D2A67088E00105B53 /* CountryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F839C2A67088E00105B53 /* CountryManager.swift */; };
+		503F83A02A67273200105B53 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F839F2A67273200105B53 /* FavoritesViewModel.swift */; };
+		503F83A32A672B3800105B53 /* FavoritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F83A22A672B3800105B53 /* FavoritesCollectionViewCell.swift */; };
+		503F83A62A672BB400105B53 /* FavoritesCollectionViewCellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503F83A52A672BB400105B53 /* FavoritesCollectionViewCellScreen.swift */; };
 		504365A82A4BDF56001030E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 504365A72A4BDF56001030E9 /* LaunchScreen.storyboard */; };
 		504365AA2A4BE12B001030E9 /* brasil-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 504365A92A4BE12B001030E9 /* brasil-logo.png */; };
 		5052235C2A4A2F950034AD0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5052235B2A4A2F950034AD0F /* AppDelegate.swift */; };
@@ -52,6 +56,10 @@
 		500884D12A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCountryCollectionViewCellScreen.swift; sourceTree = "<group>"; };
 		500884D42A534D5D00972A5C /* SearchCountryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCountryViewModel.swift; sourceTree = "<group>"; };
 		50126A262A4F6D2F0065967C /* MapService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapService.swift; sourceTree = "<group>"; };
+		503F839C2A67088E00105B53 /* CountryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryManager.swift; sourceTree = "<group>"; };
+		503F839F2A67273200105B53 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		503F83A22A672B3800105B53 /* FavoritesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCell.swift; sourceTree = "<group>"; };
+		503F83A52A672BB400105B53 /* FavoritesCollectionViewCellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCollectionViewCellScreen.swift; sourceTree = "<group>"; };
 		504365A72A4BDF56001030E9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		504365A92A4BE12B001030E9 /* brasil-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "brasil-logo.png"; sourceTree = "<group>"; };
 		505223582A4A2F950034AD0F /* CountryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CountryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +142,39 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		503F839B2A67087C00105B53 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				503F839C2A67088E00105B53 /* CountryManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		503F839E2A67272100105B53 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				503F839F2A67273200105B53 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		503F83A12A672AEA00105B53 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				503F83A42A672B8900105B53 /* Screen */,
+				503F83A22A672B3800105B53 /* FavoritesCollectionViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		503F83A42A672B8900105B53 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				503F83A52A672BB400105B53 /* FavoritesCollectionViewCellScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
 		5052234F2A4A2F950034AD0F = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +194,7 @@
 		5052235A2A4A2F950034AD0F /* CountryApp */ = {
 			isa = PBXGroup;
 			children = (
+				503F839B2A67087C00105B53 /* Manager */,
 				5093ADFF2A4C88D800FB44CA /* Images */,
 				5052237D2A4A30210034AD0F /* Utils */,
 				505223792A4A30210034AD0F /* Service */,
@@ -399,6 +441,8 @@
 		50BC64062A57431E00204C37 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				503F83A12A672AEA00105B53 /* Cell */,
+				503F839E2A67272100105B53 /* ViewModel */,
 				50BC64082A57433700204C37 /* Screen */,
 				50BC64072A57433100204C37 /* VC */,
 			);
@@ -562,6 +606,7 @@
 			files = (
 				505223AB2A4A30210034AD0F /* ContinentsViewController.swift in Sources */,
 				50E516012A50BB4500DDDCA6 /* CountriesByContinentViewController.swift in Sources */,
+				503F83A32A672B3800105B53 /* FavoritesCollectionViewCell.swift in Sources */,
 				505223B02A4A30210034AD0F /* AllCountriesCollectionViewCellScreen.swift in Sources */,
 				500884D22A534BFF00972A5C /* SearchCountryCollectionViewCellScreen.swift in Sources */,
 				505223AC2A4A30210034AD0F /* ContinentsViewControllerScreen.swift in Sources */,
@@ -570,14 +615,17 @@
 				50E515FA2A50B68300DDDCA6 /* CountriesByContinentCollectionViewCellScreen.swift in Sources */,
 				505223B12A4A30210034AD0F /* AllCountriesCollectionViewCell.swift in Sources */,
 				50E515FF2A50BB2C00DDDCA6 /* CountriesByContinentViewControllerScreen.swift in Sources */,
+				503F83A62A672BB400105B53 /* FavoritesCollectionViewCellScreen.swift in Sources */,
 				500884D02A534BEA00972A5C /* SearchCountryCollectionViewCell.swift in Sources */,
 				505223A42A4A30210034AD0F /* TabBarController.swift in Sources */,
 				5052235C2A4A2F950034AD0F /* AppDelegate.swift in Sources */,
 				50BC64122A574DC000204C37 /* CountryModel.xcdatamodeld in Sources */,
 				500884D52A534D5D00972A5C /* SearchCountryViewModel.swift in Sources */,
+				503F83A02A67273200105B53 /* FavoritesViewModel.swift in Sources */,
 				5093AE012A4C8B7300FB44CA /* UIViewController+Extension.swift in Sources */,
 				505223AF2A4A30210034AD0F /* AllCountriesViewModel.swift in Sources */,
 				50BC640C2A57437000204C37 /* FavoritesViewControllerScreen.swift in Sources */,
+				503F839D2A67088E00105B53 /* CountryManager.swift in Sources */,
 				50A6246A2A51DDA200A34273 /* ContinentsViewModel.swift in Sources */,
 				50BC640A2A57435500204C37 /* FavoritesViewController.swift in Sources */,
 				505223B22A4A30210034AD0F /* AllCountriesViewController.swift in Sources */,

@@ -10,9 +10,11 @@ import UIKit
 class FavoritesViewController: UIViewController {
     
     var screen: FavoritesViewControllerScreen?
+    var viewModel: FavoritesViewModel = FavoritesViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        viewModel.fetchFavoriteCountryList()
     }
     
     override func loadView() {
@@ -30,11 +32,12 @@ class FavoritesViewController: UIViewController {
 extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel.numberOfItemsInSection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: AllCountriesCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: AllCountriesCollectionViewCell.identifier, for: indexPath) as? AllCountriesCollectionViewCell
+        let cell: FavoritesCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionViewCell.identifier, for: indexPath) as? FavoritesCollectionViewCell
+        cell?.setupCell(country: viewModel.countryManager.getItem(indexPath: indexPath))
         return cell ?? UICollectionViewCell()
     }
     

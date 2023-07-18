@@ -11,6 +11,7 @@ class AllCountriesViewController: UIViewController {
     
     var screen: AllCountriesViewControllerScreen?
     var viewModel: AllCountriesViewModel = AllCountriesViewModel()
+    private var countryManager: CountryManager = CountryManager()
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -28,6 +29,7 @@ class AllCountriesViewController: UIViewController {
         self.viewModel.delegate(delegate: self)
         self.viewModel.fetchRequest()
     }
+    
 }
 
 extension AllCountriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -39,6 +41,16 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AllCountriesCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: AllCountriesCollectionViewCell.identifier, for: indexPath) as? AllCountriesCollectionViewCell
         cell?.setupCell(country: viewModel.loadCurrentCountry(indexPath: indexPath))
+        cell?.saveFavorite = { [weak self] in
+            guard let objeto = self?.viewModel.loadCurrentCountry(indexPath: indexPath) else { return }
+            self?.countryManager.appendItem(country: objeto) { sucess in
+                if sucess {
+                    print("objeto salvo")
+                } else {
+                    print("deu ruim")
+                }
+            }
+        }
         return cell ?? UICollectionViewCell()
     }
     

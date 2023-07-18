@@ -1,23 +1,13 @@
 //
-//  AllCountriesCollectionViewCellScreen.swift
-//  FlagsApp
+//  FavoritesCollectionViewCellScreen.swift
+//  CountryApp
 //
-//  Created by Felipe Augusto Correia on 25/06/23.
+//  Created by Felipe Augusto Correia on 18/07/23.
 //
 
 import UIKit
 
-protocol AllCountriesCollectionViewCellScreenProtocol: AnyObject {
-    func favoriteButtonTapped()
-}
-
-class AllCountriesCollectionViewCellScreen: UIView {
-    
-    var delegate: AllCountriesCollectionViewCellScreenProtocol?
-    
-    public func delegate(delegate: AllCountriesCollectionViewCellScreenProtocol) {
-        self.delegate = delegate
-    }
+class FavoritesCollectionViewCellScreen: UIView {
     
     lazy var cardView: UIView = {
         let view = UIView()
@@ -54,7 +44,6 @@ class AllCountriesCollectionViewCellScreen: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "star"), for: .normal)
         button.tintColor = .appBlue
-        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -66,10 +55,6 @@ class AllCountriesCollectionViewCellScreen: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc public func favoriteButtonTapped() {
-        self.delegate?.favoriteButtonTapped()
     }
     
     public func addElements() {

@@ -31,7 +31,7 @@ class FavoritesViewControllerScreen: UIView {
         cv.translatesAutoresizingMaskIntoConstraints = false
         cv.showsVerticalScrollIndicator = false
         cv.backgroundColor = .clear
-        cv.register(AllCountriesCollectionViewCell.self, forCellWithReuseIdentifier: AllCountriesCollectionViewCell.identifier)
+        cv.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: FavoritesCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 24, bottom: 0, right: 24)
         layout.scrollDirection = .vertical

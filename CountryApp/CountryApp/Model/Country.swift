@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - Country
-struct Country: Codable {
+struct Country: Codable{
     let name: Name?
     let tld: [String]?
     let cca2, ccn3, cca3, cioc: String?
