@@ -154,7 +154,6 @@ class CountryDetailViewController: UIViewController {
 
 extension CountryDetailViewController: CountryDetailViewControllerScreenProtocol {
     func openWebMapButtonTapped() {
-        print(#function)
         let ac = UIAlertController(title: "Open Page", message: nil, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "Open Street Map", style: .default, handler: openPage))
         ac.addAction(UIAlertAction(title: "Open Google Maps", style: .default, handler: openPage))

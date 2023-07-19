@@ -428,7 +428,7 @@ class CountryDetailViewControllerScreen: UIView {
             continentLabel.leadingAnchor.constraint(equalTo: continentView.leadingAnchor, constant: 10),
             continentLabel.trailingAnchor.constraint(equalTo: continentView.trailingAnchor, constant: -10),
             
-            currencyTitleLabel.leadingAnchor.constraint(equalTo: continentTitleLabel.leadingAnchor),
+            currencyTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             currencyTitleLabel.topAnchor.constraint(equalTo: continentTitleLabel.bottomAnchor, constant: 15),
             
             stackView.topAnchor.constraint(equalTo: currencyTitleLabel.bottomAnchor, constant: 10),
