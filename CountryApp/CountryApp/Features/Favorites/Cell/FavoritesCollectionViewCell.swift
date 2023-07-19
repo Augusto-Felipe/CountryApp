@@ -11,6 +11,7 @@ import AlamofireImage
 class FavoritesCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = String(describing: FavoritesCollectionViewCell.self)
+    public var deleteFavorite: (() -> Void)?
     
     lazy var screen: FavoritesCollectionViewCellScreen = {
         let screen = FavoritesCollectionViewCellScreen()
@@ -20,6 +21,7 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        screen.delegate(delegate: self)
         addElements()
         setupConstraints()
     }
@@ -49,4 +51,30 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    public func isFavoriteTapped() -> Bool {
+        if let currentImage = screen.favoriteButton.currentImage {
+            let desiredImage = UIImage(systemName: "star")
+            let isImageEqual = currentImage.isEqual(desiredImage)
+            
+            if isImageEqual {
+                screen.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+                return true
+            } else {
+                screen.favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+}
+
+extension FavoritesCollectionViewCell: FavoritesCollectionViewCellScreenProtocol {
+    func favoriteButtonTapped() {
+        if isFavoriteTapped() {
+            deleteFavorite?()
+        } else {
+            #warning("excluir favorito")
+        }
+    }
 }

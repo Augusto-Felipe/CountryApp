@@ -13,7 +13,6 @@ class AllCountriesCollectionViewCell: UICollectionViewCell {
     static let identifier: String = String(describing: AllCountriesCollectionViewCell.self)
     public var saveFavorite: (() -> Void)?
 
-    
     lazy var screen: AllCountriesCollectionViewCellScreen = {
         let screen = AllCountriesCollectionViewCellScreen()
         screen.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +67,6 @@ class AllCountriesCollectionViewCell: UICollectionViewCell {
             return false
         }
     }
-    
 }
 
 extension AllCountriesCollectionViewCell: AllCountriesCollectionViewCellScreenProtocol {
@@ -76,7 +74,7 @@ extension AllCountriesCollectionViewCell: AllCountriesCollectionViewCellScreenPr
         if isFavoriteTapped() {
             saveFavorite?()
         } else {
-            #warning("excluir favorito")
+            
         }
     }
 }

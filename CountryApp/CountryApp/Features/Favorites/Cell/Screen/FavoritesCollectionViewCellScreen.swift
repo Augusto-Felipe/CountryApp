@@ -7,7 +7,18 @@
 
 import UIKit
 
+protocol FavoritesCollectionViewCellScreenProtocol: AnyObject {
+    func favoriteButtonTapped()
+}
+
+
 class FavoritesCollectionViewCellScreen: UIView {
+    
+    var delegate: FavoritesCollectionViewCellScreenProtocol?
+    
+    public func delegate(delegate: FavoritesCollectionViewCellScreenProtocol) {
+        self.delegate = delegate
+    }
     
     lazy var cardView: UIView = {
         let view = UIView()
@@ -44,6 +55,7 @@ class FavoritesCollectionViewCellScreen: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "star"), for: .normal)
         button.tintColor = .appBlue
+        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -55,6 +67,10 @@ class FavoritesCollectionViewCellScreen: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc public func favoriteButtonTapped() {
+        self.delegate?.favoriteButtonTapped()
     }
     
     public func addElements() {

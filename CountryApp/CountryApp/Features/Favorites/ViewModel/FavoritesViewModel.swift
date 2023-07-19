@@ -7,21 +7,31 @@
 
 import Foundation
 
+protocol FavoritesViewModelProtocol: AnyObject {
+    func reloadCollectionView()
+}
+
 class FavoritesViewModel {
     
-    var favoriteCountryList: [CountryEntity] = []
-    var countryManager: CountryManager = CountryManager()
+    private var favoriteCountryList: [CountryEntity] = []
+    private var countryManager: CountryManager = CountryManager()
+    private var delegate: FavoritesViewModelProtocol?
     
-    public func fetchFavoriteCountryList() {
-        favoriteCountryList = countryManager.getItems 
+    public func delegate(delegate: FavoritesViewModelProtocol) {
+        self.delegate = delegate
     }
     
-    public func loadCurrentCounttry(indexPath: IndexPath) -> CountryEntity {
+    public func fetchFavoriteCountryList() {
+        self.favoriteCountryList = countryManager.getItems
+        self.delegate?.reloadCollectionView()
+    }
+    
+    public func loadCurrentCountry(indexPath: IndexPath) -> CountryEntity {
         return favoriteCountryList[indexPath.row]
     }
     
     public var numberOfItemsInSection: Int {
         return favoriteCountryList.count
     }
-    
 }
+

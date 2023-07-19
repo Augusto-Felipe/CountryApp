@@ -46,6 +46,7 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
             self?.countryManager.appendItem(country: objeto) { sucess in
                 if sucess {
                     print("objeto salvo")
+                    print(objeto)
                 } else {
                     print("deu ruim")
                 }
