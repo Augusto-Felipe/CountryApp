@@ -25,11 +25,10 @@ class AllCountriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.viewModel.fetchRequest()
         self.screen?.configCollectionView(delegate: self, datasource: self)
         self.viewModel.delegate(delegate: self)
-        self.viewModel.fetchRequest()
     }
-    
 }
 
 extension AllCountriesViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -42,13 +41,13 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
         let cell: AllCountriesCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: AllCountriesCollectionViewCell.identifier, for: indexPath) as? AllCountriesCollectionViewCell
         cell?.setupCell(country: viewModel.loadCurrentCountry(indexPath: indexPath))
         cell?.saveFavorite = { [weak self] in
-            guard let objeto = self?.viewModel.loadCurrentCountry(indexPath: indexPath) else { return }
-            self?.countryManager.appendItem(country: objeto) { sucess in
+            guard let object = self?.viewModel.loadCurrentCountry(indexPath: indexPath) else { return }
+            self?.countryManager.appendItem(country: object) { sucess in
                 if sucess {
-                    print("objeto salvo")
-                    print(objeto)
+                    print("country saved")
+                    print(object)
                 } else {
-                    print("deu ruim")
+                    print("error")
                 }
             }
         }

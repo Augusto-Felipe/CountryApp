@@ -14,6 +14,7 @@ class SearchCountryViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        viewModel.fetchRequest()
     }
     
     override func loadView() {
@@ -27,7 +28,6 @@ class SearchCountryViewController: UIViewController {
         hideKeyboardWhenTappedAround()
         self.viewModel.delegate(delegate: self)
         self.screen?.textFieldDelegate(delegate: self)
-        viewModel.fetchRequest()
     }
 }
 

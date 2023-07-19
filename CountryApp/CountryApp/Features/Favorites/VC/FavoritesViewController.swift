@@ -41,8 +41,8 @@ extension FavoritesViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell: FavoritesCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionViewCell.identifier, for: indexPath) as? FavoritesCollectionViewCell
         cell?.setupCell(country: viewModel.loadCurrentCountry(indexPath: indexPath))
         cell?.deleteFavorite = { [weak self] in
-            guard let objeto = self?.viewModel.loadCurrentCountry(indexPath: indexPath) else { return }
-            self?.countryManager.deleteItem(country: objeto) { success in
+            guard let object = self?.viewModel.loadCurrentCountry(indexPath: indexPath) else { return }
+            self?.countryManager.deleteItem(country: object) { success in
                 if success {
                     self?.viewModel.fetchFavoriteCountryList()
                     self?.screen?.collectionView.reloadData()

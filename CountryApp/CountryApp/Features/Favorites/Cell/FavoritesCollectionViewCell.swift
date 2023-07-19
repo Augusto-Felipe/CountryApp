@@ -48,12 +48,13 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
         if let urlFlagImage: URL = URL(string: country.image ?? "") {
             screen.countryFlagImageView.af.setImage(withURL: urlFlagImage)
             screen.countryFlagImageView.backgroundColor = .white
+            screen.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
     }
     
     public func isFavoriteTapped() -> Bool {
         if let currentImage = screen.favoriteButton.currentImage {
-            let desiredImage = UIImage(systemName: "star")
+            let desiredImage = UIImage(systemName: "star.fill")
             let isImageEqual = currentImage.isEqual(desiredImage)
             
             if isImageEqual {
@@ -74,7 +75,7 @@ extension FavoritesCollectionViewCell: FavoritesCollectionViewCellScreenProtocol
         if isFavoriteTapped() {
             deleteFavorite?()
         } else {
-            #warning("excluir favorito")
+            
         }
     }
 }
