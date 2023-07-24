@@ -11,7 +11,8 @@ class AllCountriesViewController: UIViewController {
     
     var screen: AllCountriesViewControllerScreen?
     var viewModel: AllCountriesViewModel = AllCountriesViewModel()
-    private var countryManager: CountryManager = CountryManager()
+    var countryManager: CountryManager = CountryManager()
+    var alert: Alert?
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -25,8 +26,9 @@ class AllCountriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.alert = Alert(controller: self)
         self.viewModel.fetchRequest()
-        screen?.delegate(delegate: self)
+        self.screen?.delegate(delegate: self)
         self.screen?.configCollectionView(delegate: self, datasource: self)
         self.viewModel.delegate(delegate: self)
     }
@@ -66,6 +68,10 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
 }
 
 extension AllCountriesViewController: AllCountriesViewModelProtocol {
+    func apiRequestError() {
+        self.alert?.createAlert(title: "Erro", message: "Recarregue as informações clicando no botão acima.")
+    }
+    
     func reloadCollectionView() {
         self.screen?.collectionView.reloadData()
     }

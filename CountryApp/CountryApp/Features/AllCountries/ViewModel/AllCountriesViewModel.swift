@@ -9,6 +9,7 @@ import Foundation
 
 protocol AllCountriesViewModelProtocol: AnyObject {
     func reloadCollectionView()
+    func apiRequestError()
 }
 
 class AllCountriesViewModel {
@@ -32,7 +33,7 @@ class AllCountriesViewModel {
     public func fetchRequest() {
         service.getCountryData { data, error in
             if error != nil {
-                
+                self.delegate?.apiRequestError()
             } else {
                 self.countryList = data ?? []
                 self.delegate?.reloadCollectionView()
