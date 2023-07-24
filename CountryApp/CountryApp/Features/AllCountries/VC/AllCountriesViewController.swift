@@ -26,6 +26,7 @@ class AllCountriesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         self.viewModel.fetchRequest()
+        screen?.delegate(delegate: self)
         self.screen?.configCollectionView(delegate: self, datasource: self)
         self.viewModel.delegate(delegate: self)
     }
@@ -70,3 +71,8 @@ extension AllCountriesViewController: AllCountriesViewModelProtocol {
     }
 }
 
+extension AllCountriesViewController: AllCountriesViewControllerScreenProtocol {
+    func reloadData() {
+        self.viewModel.fetchRequest()
+    }
+}

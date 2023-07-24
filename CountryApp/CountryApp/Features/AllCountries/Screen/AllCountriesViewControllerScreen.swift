@@ -7,13 +7,32 @@
 
 import UIKit
 
+protocol AllCountriesViewControllerScreenProtocol: AnyObject {
+    func reloadData()
+}
+
 class AllCountriesViewControllerScreen: UIView {
+    
+    var delegate: AllCountriesViewControllerScreenProtocol?
+    
+    public func delegate(delegate: AllCountriesViewControllerScreenProtocol) {
+        self.delegate = delegate
+    }
     
     lazy var navigationBarView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .appBlue
         return view
+    }()
+    
+    lazy var reloadInfo: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "circles.hexagonpath.fill"), for: .normal)
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(reloadButtonTapped), for: .touchUpInside)
+        return button
     }()
     
     lazy var navigationTitleLabel: UILabel = {
@@ -39,6 +58,10 @@ class AllCountriesViewControllerScreen: UIView {
         return cv
     }()
     
+    @objc func reloadButtonTapped() {
+        self.delegate?.reloadData()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
@@ -57,6 +80,7 @@ class AllCountriesViewControllerScreen: UIView {
     public func addElements() {
         addSubview(navigationBarView)
         navigationBarView.addSubview(navigationTitleLabel)
+        navigationBarView.addSubview(reloadInfo)
         addSubview(collectionView)
     }
     
@@ -69,6 +93,11 @@ class AllCountriesViewControllerScreen: UIView {
             
             navigationTitleLabel.centerXAnchor.constraint(equalTo: navigationBarView.centerXAnchor),
             navigationTitleLabel.centerYAnchor.constraint(equalTo: navigationBarView.centerYAnchor, constant: 20),
+            
+            reloadInfo.centerYAnchor.constraint(equalTo: navigationTitleLabel.centerYAnchor),
+            reloadInfo.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -25),
+            reloadInfo.heightAnchor.constraint(equalToConstant: 40),
+            reloadInfo.widthAnchor.constraint(equalToConstant: 40),
             
             collectionView.topAnchor.constraint(equalTo: navigationBarView.bottomAnchor),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
