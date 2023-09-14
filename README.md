@@ -7,7 +7,7 @@ Explore o mundo com nosso aplicativo de consulta de países! Descubra informaç�
 
 Com este aplicativo, o usuário tem acesso a informações essenciais sobre mais de 200 países diretamente na palma de sua mão.
 
-## Layout mobile
+## Layout
 <p align="center">
   <img src="https://github.com/Augusto-Felipe/CountryApp/assets/107811979/cefe8267-f303-4bcf-8efb-52d4e688015f" width="300" />
   <img src="https://github.com/Augusto-Felipe/CountryApp/assets/107811979/0d13d107-d970-44fd-88a2-bd692d6fab17" width="300" />
