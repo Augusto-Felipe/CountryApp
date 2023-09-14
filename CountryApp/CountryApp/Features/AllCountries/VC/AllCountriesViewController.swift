@@ -11,6 +11,8 @@ class AllCountriesViewController: UIViewController {
     
     var screen: AllCountriesViewControllerScreen?
     var viewModel: AllCountriesViewModel = AllCountriesViewModel()
+    var countryManager: CountryManager = CountryManager()
+    var alert: Alert?
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -24,9 +26,11 @@ class AllCountriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        self.alert = Alert(controller: self)
+        self.viewModel.fetchRequest()
+        self.screen?.delegate(delegate: self)
         self.screen?.configCollectionView(delegate: self, datasource: self)
         self.viewModel.delegate(delegate: self)
-        self.viewModel.fetchRequest()
     }
 }
 
@@ -38,7 +42,18 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AllCountriesCollectionViewCell? = collectionView.dequeueReusableCell(withReuseIdentifier: AllCountriesCollectionViewCell.identifier, for: indexPath) as? AllCountriesCollectionViewCell
-        cell?.setupCell(country: viewModel.loadCurrentImage(indexPath: indexPath))
+        cell?.setupCell(country: viewModel.loadCurrentCountry(indexPath: indexPath))
+        cell?.saveFavorite = { [weak self] in
+            guard let object = self?.viewModel.loadCurrentCountry(indexPath: indexPath) else { return }
+            self?.countryManager.appendItem(country: object) { sucess in
+                if sucess {
+                    print("country saved")
+                    print(object)
+                } else {
+                    print("error")
+                }
+            }
+        }
         return cell ?? UICollectionViewCell()
     }
     
@@ -47,13 +62,23 @@ extension AllCountriesViewController: UICollectionViewDelegate, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = CountryDetailViewController(country: viewModel.loadCurrentImage(indexPath: indexPath))
+        let vc = CountryDetailViewController(country: viewModel.loadCurrentCountry(indexPath: indexPath))
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension AllCountriesViewController: AllCountriesViewModelProtocol {
+    func apiRequestError() {
+        self.alert?.createAlert(title: "Erro", message: "Recarregue as informações clicando no botão acima.")
+    }
+    
     func reloadCollectionView() {
         self.screen?.collectionView.reloadData()
+    }
+}
+
+extension AllCountriesViewController: AllCountriesViewControllerScreenProtocol {
+    func reloadData() {
+        self.viewModel.fetchRequest()
     }
 }

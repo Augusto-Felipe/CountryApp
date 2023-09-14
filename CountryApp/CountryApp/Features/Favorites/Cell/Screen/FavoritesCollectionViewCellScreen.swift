@@ -1,21 +1,22 @@
 //
-//  AllCountriesCollectionViewCellScreen.swift
-//  FlagsApp
+//  FavoritesCollectionViewCellScreen.swift
+//  CountryApp
 //
-//  Created by Felipe Augusto Correia on 25/06/23.
+//  Created by Felipe Augusto Correia on 18/07/23.
 //
 
 import UIKit
 
-protocol AllCountriesCollectionViewCellScreenProtocol: AnyObject {
+protocol FavoritesCollectionViewCellScreenProtocol: AnyObject {
     func favoriteButtonTapped()
 }
 
-class AllCountriesCollectionViewCellScreen: UIView {
+
+class FavoritesCollectionViewCellScreen: UIView {
     
-    var delegate: AllCountriesCollectionViewCellScreenProtocol?
+    var delegate: FavoritesCollectionViewCellScreenProtocol?
     
-    public func delegate(delegate: AllCountriesCollectionViewCellScreenProtocol) {
+    public func delegate(delegate: FavoritesCollectionViewCellScreenProtocol) {
         self.delegate = delegate
     }
     

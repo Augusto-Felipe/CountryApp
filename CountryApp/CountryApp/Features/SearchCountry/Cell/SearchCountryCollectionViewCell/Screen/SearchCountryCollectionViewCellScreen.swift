@@ -1,24 +1,14 @@
 //
-//  AllCountriesCollectionViewCellScreen.swift
-//  FlagsApp
+//  SearchCountryCollectionViewCellScreen.swift
+//  CountryApp
 //
-//  Created by Felipe Augusto Correia on 25/06/23.
+//  Created by Felipe Augusto Correia on 03/07/23.
 //
 
 import UIKit
 
-protocol AllCountriesCollectionViewCellScreenProtocol: AnyObject {
-    func favoriteButtonTapped()
-}
+class SearchCountryCollectionViewCellScreen: UIView {
 
-class AllCountriesCollectionViewCellScreen: UIView {
-    
-    var delegate: AllCountriesCollectionViewCellScreenProtocol?
-    
-    public func delegate(delegate: AllCountriesCollectionViewCellScreenProtocol) {
-        self.delegate = delegate
-    }
-    
     lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -48,16 +38,7 @@ class AllCountriesCollectionViewCellScreen: UIView {
         lb.numberOfLines = 0
         return lb
     }()
-    
-    lazy var favoriteButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "star"), for: .normal)
-        button.tintColor = .appBlue
-        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
-        return button
-    }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         addElements()
@@ -68,15 +49,10 @@ class AllCountriesCollectionViewCellScreen: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc public func favoriteButtonTapped() {
-        self.delegate?.favoriteButtonTapped()
-    }
-    
     public func addElements() {
         addSubview(cardView)
         cardView.addSubview(countryFlagImageView)
         cardView.addSubview(countryNameLabel)
-        cardView.addSubview(favoriteButton)
     }
     
     public func setupConstraints() {
@@ -94,11 +70,6 @@ class AllCountriesCollectionViewCellScreen: UIView {
             countryNameLabel.leadingAnchor.constraint(equalTo: countryFlagImageView.trailingAnchor, constant: 20),
             countryNameLabel.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -20),
             countryNameLabel.centerYAnchor.constraint(equalTo: cardView.centerYAnchor),
-            
-            favoriteButton.topAnchor.constraint(equalTo: cardView.topAnchor, constant: 10),
-            favoriteButton.trailingAnchor.constraint(equalTo: cardView.trailingAnchor, constant: -15),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 30),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 30),
         ])
     }
 }

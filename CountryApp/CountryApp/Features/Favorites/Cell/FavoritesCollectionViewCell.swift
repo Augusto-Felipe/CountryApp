@@ -1,20 +1,20 @@
 //
-//  AllCountriesCollectionViewCell.swift
-//  FlagsApp
+//  FavoritesCollectionViewCell.swift
+//  CountryApp
 //
-//  Created by Felipe Augusto Correia on 25/06/23.
+//  Created by Felipe Augusto Correia on 18/07/23.
 //
 
 import UIKit
 import AlamofireImage
 
-class AllCountriesCollectionViewCell: UICollectionViewCell {
+class FavoritesCollectionViewCell: UICollectionViewCell {
     
-    static let identifier: String = String(describing: AllCountriesCollectionViewCell.self)
-    public var saveFavorite: (() -> Void)?
-
-    lazy var screen: AllCountriesCollectionViewCellScreen = {
-        let screen = AllCountriesCollectionViewCellScreen()
+    static let identifier: String = String(describing: FavoritesCollectionViewCell.self)
+    public var deleteFavorite: (() -> Void)?
+    
+    lazy var screen: FavoritesCollectionViewCellScreen = {
+        let screen = FavoritesCollectionViewCellScreen()
         screen.translatesAutoresizingMaskIntoConstraints = false
         return screen
     }()
@@ -43,17 +43,18 @@ class AllCountriesCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    public func setupCell(country: Country) {
-        if let urlFlagImage: URL = URL(string: country.flags?.png ?? "") {
+    public func setupCell(country: CountryEntity) {
+        self.screen.countryNameLabel.text = country.name
+        if let urlFlagImage: URL = URL(string: country.image ?? "") {
             screen.countryFlagImageView.af.setImage(withURL: urlFlagImage)
             screen.countryFlagImageView.backgroundColor = .white
+            screen.favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
-        screen.countryNameLabel.text = country.name?.common
     }
     
     public func isFavoriteTapped() -> Bool {
         if let currentImage = screen.favoriteButton.currentImage {
-            let desiredImage = UIImage(systemName: "star")
+            let desiredImage = UIImage(systemName: "star.fill")
             let isImageEqual = currentImage.isEqual(desiredImage)
             
             if isImageEqual {
@@ -69,10 +70,10 @@ class AllCountriesCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension AllCountriesCollectionViewCell: AllCountriesCollectionViewCellScreenProtocol {
+extension FavoritesCollectionViewCell: FavoritesCollectionViewCellScreenProtocol {
     func favoriteButtonTapped() {
         if isFavoriteTapped() {
-            saveFavorite?()
+            deleteFavorite?()
         } else {
             
         }

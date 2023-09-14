@@ -9,6 +9,7 @@ import Foundation
 
 protocol AllCountriesViewModelProtocol: AnyObject {
     func reloadCollectionView()
+    func apiRequestError()
 }
 
 class AllCountriesViewModel {
@@ -16,13 +17,12 @@ class AllCountriesViewModel {
     private var delegate: AllCountriesViewModelProtocol?
     private var service: CountryService = CountryService()
     private var countryList: [Country] = []
-    private var searchCountryList: [Country] = []
     
     public func delegate(delegate: AllCountriesViewModelProtocol) {
         self.delegate = delegate
     }
     
-    public func loadCurrentImage(indexPath: IndexPath) -> Country {
+    public func loadCurrentCountry(indexPath: IndexPath) -> Country {
         return countryList[indexPath.row]
     }
     
@@ -33,12 +33,10 @@ class AllCountriesViewModel {
     public func fetchRequest() {
         service.getCountryData { data, error in
             if error != nil {
-                
+                self.delegate?.apiRequestError()
             } else {
                 self.countryList = data ?? []
-                self.searchCountryList = data ?? []
                 self.delegate?.reloadCollectionView()
-                print(self.countryList)
             }
         }
     }

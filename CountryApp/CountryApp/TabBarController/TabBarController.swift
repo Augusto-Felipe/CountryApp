@@ -15,9 +15,10 @@ class TabBarController: UITabBarController {
     
     private func setupTabBarController() {
         let allCountriesVC = UINavigationController(rootViewController: AllCountriesViewController())
-        let countriesByContinentVC = UINavigationController(rootViewController: CountriesByContinentViewController())
+        let countriesByContinentVC = UINavigationController(rootViewController: ContinentsViewController())
         let searchCountryVC = UINavigationController(rootViewController: SearchCountryViewController())
-        self.setViewControllers([allCountriesVC, countriesByContinentVC,searchCountryVC], animated: false)
+        let favoriteCountriesVC = UINavigationController(rootViewController: FavoritesViewController())
+        self.setViewControllers([allCountriesVC, countriesByContinentVC ,searchCountryVC, favoriteCountriesVC], animated: false)
         self.tabBar.backgroundColor = .appBlue
         self.tabBar.isTranslucent = false
         self.tabBar.tintColor = UIColor(red: 175/255, green: 211/255, blue: 226/255, alpha: 1.0)
@@ -32,6 +33,9 @@ class TabBarController: UITabBarController {
         
         items[2].title = "Buscar"
         items[2].image = UIImage(systemName: "magnifyingglass")
+        
+        items[3].title = "Favoritos"
+        items[3].image = UIImage(systemName: "star")
     }
 }
 

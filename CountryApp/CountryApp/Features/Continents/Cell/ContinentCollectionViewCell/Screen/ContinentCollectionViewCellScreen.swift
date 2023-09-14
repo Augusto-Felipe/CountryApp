@@ -7,20 +7,20 @@
 
 import UIKit
 
-class CountriesByContinentCollectionViewCellScreen: UIView {
+class ContinentCollectionViewCellScreen: UIView {
 
     lazy var cardView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 22
         view.backgroundColor = .cellColor
+        view.setCardShadow()
         return view
     }()
     
     lazy var continentLabel: UILabel = {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
-        lb.text = "Teste"
         lb.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         lb.textColor = .appBlue
         lb.textAlignment = .center

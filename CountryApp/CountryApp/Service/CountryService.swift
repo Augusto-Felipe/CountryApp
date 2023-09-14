@@ -25,6 +25,5 @@ class CountryService {
                 completion(nil, error)
             }
         }
-        
     }
 }
