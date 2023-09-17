@@ -18,6 +18,21 @@ Com este aplicativo, o usuário tem acesso a informações essenciais sobre mais
   <img src="https://github.com/Augusto-Felipe/CountryApp/assets/107811979/82941310-cc08-4c1f-9fad-2d28e1b12b05" width="300" />
 </p>
 
+# Recursos principais
+- Pesquisa de Países: Os usuários podem pesquisar países de diversas maneiras, incluindo por continente ou nome.
+
+- Informações Detalhadas: Cada país listado exibe informações detalhadas, incluindo:
+    - População
+    - Moeda
+    - Bandeira
+    - Brasão de Armas
+    - Capital
+    - Mapa
+
+- Favoritos: Os usuários podem marcar países como favoritos, facilitando o acesso rápido a informações sobre os países que mais lhes interessam.
+
+- Interface Intuitiva: O aplicativo possui uma interface de usuário intuitiva, tornando a pesquisa de países e o acesso a informações detalhadas uma experiência fácil e agradável.
+
 # Tecnologias utilizadas
 - Swift
 - UIKit
